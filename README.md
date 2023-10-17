@@ -1,3 +1,5 @@
+![Incomplete Readme](https://github.com/misslivirose/MemoryCacheExt/assets/4313320/d9453584-d196-4552-af34-44c72dcc4050)
+
 # Memory Cache - Firefox Extension
 
 Memory Cache is a project that allows you to save a webpage while you're browsing in Firefox as a PDF, and save it to a synchronized folder that can be used in conjunction with privateGPT to augment a local language model.
