@@ -1,0 +1,64 @@
+body {
+    width: 331px;
+    background: linear-gradient(180deg, #E2EBF0 0%, #F7FCFF 0.01%, #BAD7D9 100%);
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#header {
+    width: 331px;
+    height: 44px;
+
+    line-height: 24px;
+    font-size: 16px;
+    color: black;
+
+}
+
+#header text {
+    position: absolute;
+    top: 8px;
+    left: 40px;
+}
+
+#headericon {
+    position: absolute; 
+    width: 24px;
+    height: 24px;
+    top: 9px;
+    left: 12px;
+}
+
+#save-button {
+    width: 315px;
+    height: 40px;
+    padding-top: 8px;
+    margin-left: 8px;
+    background: #1991B7;
+    border-radius: 12px;
+
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+
+    display: inline-block;
+
+}
+#save-button:hover {
+    background: #1991B7BB;
+    transition: 0.7s;
+}
+
+#save-button:active {
+    background: white;
+    color: #1991B7;
+}
+
+#linkicon {
+    position: absolute;
+    right: 8px;
+    top: 9px;
+}

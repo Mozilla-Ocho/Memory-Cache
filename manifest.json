@@ -1,0 +1,21 @@
+{
+    "manifest_version" : 2,
+    "name": "MemoryCache",
+    "version" : "1.0",
+    "description" : "Saves a copy of reader view of a tab to a specific directory",
+    "icons" : {
+        "48" : "icons/memwrite-48.png"
+    }, 
+    "permissions" : [
+        "downloads", 
+        "<all_urls>",
+        "tabs"
+    ], 
+
+    "browser_action" : {
+        "browser_style" : true,
+        "default_icon" : "icons/memwrite-32.png", 
+        "default_title" : "Memory Cache", 
+        "default_popup" : "popup/memory_cache.html"
+    }
+}

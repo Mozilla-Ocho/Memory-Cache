@@ -1,0 +1,1 @@
+brain_24.png icon licensed under [CC-by 3.0 Unported](https://creativecommons.org/licenses/by/3.0/) from user 'Howcolour' on www.iconfinder.com 
