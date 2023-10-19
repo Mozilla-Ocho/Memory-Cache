@@ -1,5 +1,3 @@
-![Incomplete Readme(2)](https://github.com/misslivirose/MemoryCacheExt/assets/4313320/adc46592-04ea-4d6d-b893-66477e24d636)
-
 # Memory Cache - Firefox Extension
 
 Memory Cache is a project that allows you to save a webpage while you're browsing in Firefox as a PDF, and save it to a synchronized folder that can be used in conjunction with privateGPT to augment a local language model.
@@ -7,7 +5,7 @@ Memory Cache is a project that allows you to save a webpage while you're browsin
 ## Prerequisites 
 1. Set up [privateGPT](https://github.com/imartinez/privateGPT) 
 2. Create a symlink between a subdirectory in your default Downloads folder called 'MemoryCache' and a 'MemoryCache' directory created inside of /PrivateGPT/source_documents/MemoryCache 
-3. Apply patch to Firefox to add the `printerSettings.silentMode` property to the Tabs API. 
+3. Apply patch to Firefox to add the `printerSettings.silentMode` property to the Tabs API. [See wiki page for instructions](https://github.com/misslivirose/MemoryCacheExt/wiki/Modifying-Firefox-to-use-Memory-Cache) 
 
 ## Setting up the Extension
 1. Clone the MemoryCacheExt GitHub repository to your local machine 
