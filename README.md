@@ -17,6 +17,4 @@ Memory Cache is a project that allows you to save a webpage while you're browsin
 2. When you want to save a page to your Memory Cache, click the icon and select the 'Save' button. This will save the file silently as a PDF if you are using a Firefox build with the `printerSettings.silentMode`  property addition. 
 
 ## Known Issues
-* I need to document the process I used to modify Firefox
-
 * The `ingest.py` script in privateGPT needs to be manually run when new files are added. In the future, adding a worker to automatically run the ingestion script after adding new files on a regular update cadence will reduce the manual steps. 
