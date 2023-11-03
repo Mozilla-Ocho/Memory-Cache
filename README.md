@@ -2,6 +2,9 @@
 
 Memory Cache is a project that allows you to save a webpage while you're browsing in Firefox as a PDF, and save it to a synchronized folder that can be used in conjunction with privateGPT to augment a local language model.
 
+> [!NOTE] |
+> This setup assumed the primordial version of privateGPT. Updating the project to use the latest privateGPT setup is a WIP
+
 ## Prerequisites 
 1. Set up [privateGPT](https://github.com/imartinez/privateGPT) 
 2. Create a symlink between a subdirectory in your default Downloads folder called 'MemoryCache' and a 'MemoryCache' directory created inside of /PrivateGPT/source_documents/MemoryCache 
