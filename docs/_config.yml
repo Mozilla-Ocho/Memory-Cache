@@ -21,7 +21,7 @@
 title: Memory Cache
 email: oerickson@mozilla.com
 description: Memory Cache is an experimental developer project to turn a local desktop environment into an on-device AI agent.
-baseurl: "/docs" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  misslivirose
 
