@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Memory Cache is an exploration into synthesis, discovery, and sharing of insights more effectively through the use of technology. 
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Unlike most explorations into artificial intelligence, Memory Cache is designed to be completely personalized, on-device, and private. It is meant to explore the nuances of how individuals think, from the perspective of learning alongside us over time from the articles we read and save. 
