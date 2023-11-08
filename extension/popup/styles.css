@@ -31,7 +31,7 @@ body {
     left: 12px;
 }
 
-#save-button {
+.button {
     width: 315px;
     height: 40px;
     padding-top: 8px;
@@ -47,12 +47,12 @@ body {
     display: inline-block;
 
 }
-#save-button:hover {
+.button:hover {
     background: #1991B7BB;
     transition: 0.7s;
 }
 
-#save-button:active {
+.button:active {
     background: white;
     color: #1991B7;
 }
@@ -61,4 +61,13 @@ body {
     position: absolute;
     right: 8px;
     top: 9px;
+}
+
+#text-note {
+    width: 307px;
+    height: 100px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-radius: 12px; 
 }
