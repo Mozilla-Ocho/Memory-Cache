@@ -1,15 +1,21 @@
+:root {
+    --mcgradient: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
+    --mcgradient-hover: linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
+    --mcgradient-active: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
+}
+
 body {
     width: 265px;
     background: white;
     font-weight: 500;
-    font-size: 14px;
+    font-size: .9em;
     margin-bottom: 8px;
     font-family: 'Work Sans'
 }
 
 #header {
     width: 265px;
-    height: 40px;
+
 
     line-height: 24px;
     font-size: 16px;
@@ -22,48 +28,64 @@ body {
 }
 
 #headericon {
-    position: absolute; 
+    /* position: absolute; 
     width: 134px;
     height: 25px;
     top: 9px;
-    left: 12px;
+    left: 12px; */
+}
+
+.body-container {
+    margin-left: 8px;
+    margin-top: 8px;
 }
 
 .button {
+    cursor:pointer;
     width: 241px;
-    height: 24px;
 
-    margin-left: 8px;
-    margin-top: 8px;
+    border-radius: 12px;
 
     line-height: 21px;
     letter-spacing: 0em;
     text-align: center;
     color: #565D6D;
 
-    display: inline-block;
-
+    display:inline-block;
+    padding:8px;
 }
 
-.button:hover {
-    background: #cdcdcd;
-    transition: 0.7s;
+.primary-btn:hover {
+    background:var(--mcgradient-hover);
 }
 
-.button:active {
-    background: rgb(255,179,186);
-    background: linear-gradient(90deg, rgba(255,179,186,1) 0%, rgba(255,179,186,1) 0%, rgba(255,223,186,1) 25%, rgba(255,255,186,1) 49%, rgba(135,235,218,1) 73%, rgba(186,225,255,1) 100%);
+.primary-btn:active {
+    background:var(--mcgradient-active);
 }
 
-.button img {
-    position: fixed;
-    left: 12px;
+.primary-btn {
+    background: var(--mcgradient);
+}
+
+.secondary-btn {
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) border-box;
+    border: 2px solid transparent;
+}
+.secondary-btn:hover {
+    background: linear-gradient(90deg, #FFD6DA 0%, #FFF6EB 26.56%, #FFFFEB 50.52%, #E0FAF6 76.04%, #EBF6FF 100%) padding-box,
+    linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%) border-box;
+    border: 2px solid transparent;
+}
+.secondary-btn:active {
+    background: linear-gradient(90deg, #FFC7CD 0%, #FFEAD1 26.56%, #FFFFD6 50.52%, #CFF7F0 76.04%, #D6EDFF 100%) padding-box,
+    linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%) border-box;
+    border: 2px solid transparent;
 }
 
 #linkicon {
-    position: absolute;
-    right: 8px;
-    top: 9px;
+    /* right: 8px;
+    top: 9px; */
 }
 
 #text-note {
@@ -75,6 +97,11 @@ body {
     margin-bottom: 8px;
     
     border-radius: 12px;  
+}
+.border {
+    margin:12px 0; 
+    height:1px; 
+    background-color: #C6C6C6;
 }
 
 hr {
