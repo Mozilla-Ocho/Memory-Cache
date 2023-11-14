@@ -6,7 +6,6 @@
     --border-radius: 8px;   
 }
 
-
 body {
     background: white;
     font-weight: 500;
@@ -20,17 +19,8 @@ body {
     font-size: 16px;
     color: black;
     background-color: white;
-
     border-bottom-color: #F0EFEF;
     border-bottom-width: 1px;
-}
-
-#headericon {
-    /* position: absolute; 
-    width: 134px;
-    height: 25px;
-    top: 9px;
-    left: 12px; */
 }
 
 .body-container {
@@ -42,12 +32,10 @@ body {
 .button {
     cursor:pointer;
     border-radius: var(--border-radius);
-
     line-height: 21px;
     letter-spacing: 0em;
     text-align: center;
     color: #565D6D;
-
     padding:8px;
 }
 
@@ -60,7 +48,6 @@ body {
 .primary-btn:active {
     background:var(--mcgradient-active);
 }
-
 
 .secondary-btn {
     background: linear-gradient(white, white) padding-box,
@@ -92,7 +79,6 @@ body {
     height: 100px;
     border-radius: var(--border-radius);
 }
-
 
 .border {
     margin:16px 0; 
