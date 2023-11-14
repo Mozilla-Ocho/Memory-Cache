@@ -2,21 +2,20 @@
     --mcgradient: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
     --mcgradient-hover: linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
     --mcgradient-active: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
+    --neutral-content: #565D6D;
+    --border-radius: 8px;   
 }
 
+
 body {
-    width: 265px;
     background: white;
     font-weight: 500;
     font-size: .9em;
-    margin-bottom: 8px;
-    font-family: 'Work Sans'
+    font-family: 'Work Sans';
+    width: 290px;
 }
 
 #header {
-    width: 265px;
-
-
     line-height: 24px;
     font-size: 16px;
     color: black;
@@ -24,7 +23,6 @@ body {
 
     border-bottom-color: #F0EFEF;
     border-bottom-width: 1px;
-
 }
 
 #headericon {
@@ -36,36 +34,33 @@ body {
 }
 
 .body-container {
-    margin-left: 8px;
-    margin-top: 8px;
+    padding:8px;
+    display:flex;
+    flex-direction: column;
 }
 
 .button {
     cursor:pointer;
-    width: 241px;
-
-    border-radius: 12px;
+    border-radius: var(--border-radius);
 
     line-height: 21px;
     letter-spacing: 0em;
     text-align: center;
     color: #565D6D;
 
-    display:inline-block;
     padding:8px;
-}
-
-.primary-btn:hover {
-    background:var(--mcgradient-hover);
-}
-
-.primary-btn:active {
-    background:var(--mcgradient-active);
 }
 
 .primary-btn {
     background: var(--mcgradient);
 }
+.primary-btn:hover {
+    background:var(--mcgradient-hover);
+}
+.primary-btn:active {
+    background:var(--mcgradient-active);
+}
+
 
 .secondary-btn {
     background: linear-gradient(white, white) padding-box,
@@ -83,33 +78,41 @@ body {
     border: 2px solid transparent;
 }
 
-#linkicon {
-    /* right: 8px;
-    top: 9px; */
+.text-field {
+    margin-bottom:8px;
+}
+.text-field textarea {
+    width: 96%;
+}
+.text-field label {
+    color: var(--neutral-content);
 }
 
 #text-note {
-    width: 233px;
     height: 100px;
-
-    margin-top: 8px;
-    margin-left: 8px;
-    margin-bottom: 8px;
-    
-    border-radius: 12px;  
+    border-radius: var(--border-radius);
 }
+
+
 .border {
-    margin:12px 0; 
+    margin:16px 0; 
     height:1px; 
     background-color: #C6C6C6;
+    border-radius: var(--border-radius);
 }
 
-hr {
-    color: #EDEDED
+
+.footer {
+    background-color: #F0EFEF;
+    padding:8px;
+}
+.footer a {
+    text-decoration: none;
+    color:black;
+    font-size: 14px;
+    font-weight: 400;
 }
 
-.button-element {
-    width: 16px;
-    height: 16px;
-    margin-top: 4px;
+.foooter a:hover {
+    color: var( --neutral-content);
 }
