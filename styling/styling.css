@@ -1,0 +1,118 @@
+:root {
+	--primary: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
+	--primary-hover:linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
+	--primary-focus: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
+	--primary-content: #000000;
+	--secondary: #FFBF76;
+	--secondary-hover: #E5AC6A;
+	--secondary-focus: #CC995E;
+	--secondary-content: #000000;
+	--inactive-content:#F9F9F9;
+	--interaction-inactive:#B6B9BF;
+	--base-100: #fff;
+	--base-200: #F0EFEF;
+	--base-content: #2d3d46;
+	--base-content-subtle: #9296a0;
+	--info: #3ac0f8;
+	--info-content: #000;
+	--warning: #fcbc23;
+	--warning-content: #000;
+	--success: #37d399;
+	--success-content: #000;
+	--error: #f87272;
+	--error-content: #000;
+	--border-1: #EDEDED;
+
+	--xxs:4px;
+	--xs:8px;
+	--sm:12px;
+	--md:16px;
+	--lg:24px;
+	--xl:40px;
+}
+
+html {
+	padding:0;
+}
+
+body {
+	margin:0;
+	font-family:'Work Sans', sans-serif;
+	font-size: .9em;
+}
+
+
+.body-container {
+	background: var(--base-100);
+	min-height:100vh;
+}
+
+.swatch {
+	width:200px;
+	height:40px;
+	color: var(--base-content);
+	padding:12px;
+	/* box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.10); */
+	border-radius:8px;
+	margin:12px;
+	border:1px solid var(--border-1);
+}
+.swatch-group {
+	display:flex;
+	flex-direction: row;
+	margin-bottom:12px;
+}
+
+/* Utilities for styleguide */
+.bg-primary {
+	background: var(--primary);
+	color: var(--primary-content);
+}
+.bg-primary-hover {
+	background: var(--primary-hover);
+	color: var(--primary-content);
+}
+.bg-primary-focus {
+	background: var(--primary-focus);
+	color: var(--primary-content);
+}
+.bg-interaction-inactive {
+	background: var(--interaction-inactive);
+	color: var(--inactive-content);
+}
+.bg-secondary {
+	background: var(--secondary);
+	color: var(--secondary-content);
+}
+.bg-secondary-hover {
+	background: var(--secondary-hover);
+	color: var(--secondary-content);
+}
+.bg-secondary-focus {
+	background: var(--secondary-focus);
+	color: var(--secondary-content);
+}
+.bg-base-100 {
+	background: var(--base-100);
+	color: var(--base-content);
+}
+.bg-base-200 {
+	background: var(--base-200);
+	color: var(--base-content);
+}
+.bg-info {
+	background: var(--info);
+	color: var(--info-content);
+}
+.bg-warning {
+	background: var(--warning);
+	color: var(--warning-content);
+}
+.bg-error {
+	background: var(--error);
+	color: var(--error-content);
+}
+.bg-success {
+	background: var(--success);
+	color: var(--success-content);
+}
