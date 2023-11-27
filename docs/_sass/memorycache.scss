@@ -9,6 +9,23 @@ body {
     color: coral;
 }
 
-.post-title {
+.introduction {
+    background-image: url('../assets/images/header-background.png');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}   
 
+a {
+    color: #180AB8;
+}
+
+.site-logo {
+    width: 136px;
+    height: 36px;
+}
+
+.site-header {
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-image: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) 1 0 0 0; 
 }

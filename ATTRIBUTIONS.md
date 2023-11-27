@@ -11,3 +11,5 @@ file-icon-16.png icon licensed under [CC-by 3.0](https://creativecommons.org/lic
 CSS Gradient tool used: https://cssgradient.io/
 
 Pastel Rainbow color palette by user allyasdf on color-hex: https://www.color-hex.com/color-palette/5361 
+
+CSS Trick - border-top-linear-gradient solution fromL https://michaelharley.net/posts/2021/01/12/how-to-create-a-border-top-linear-gradient/ 
