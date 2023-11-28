@@ -38,10 +38,22 @@ function saveTextNote() {
         url: download, 
         filename: downloadProperties.toFileName
     });
-    
-    downloading.then(function(result) {console.log(result)});
 
+    browser.storage.local.set({note: ""});
+    document.querySelector("#text-note").value = "";
+    downloading.then(function(result) {console.log(result)});
 };
+
+function storeUnfinishedNote() {
+    var text = document.querySelector("#text-note").value;
+    browser.storage.local.set({note: text});
+}
 
 document.querySelector("#save-button").addEventListener("click", savePageAsPDF);
 document.querySelector("#save-note").addEventListener("click", saveTextNote);
+document.querySelector("#text-note").addEventListener("input", storeUnfinishedNote);
+
+var noteText = browser.storage.local.get("note");
+noteText.then((res) => {
+    if (res.note) document.querySelector("#text-note").value = res.note;
+});
