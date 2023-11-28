@@ -49,9 +49,19 @@ function storeUnfinishedNote() {
     browser.storage.local.set({note: text});
 }
 
+function debounce(func, delay) {
+    let debounceTimer;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+}
+
 document.querySelector("#save-button").addEventListener("click", savePageAsPDF);
 document.querySelector("#save-note").addEventListener("click", saveTextNote);
-document.querySelector("#text-note").addEventListener("input", storeUnfinishedNote);
+document.querySelector("#text-note").addEventListener("input", debounce(storeUnfinishedNote, 250));
 
 var noteText = browser.storage.local.get("note");
 noteText.then((res) => {
