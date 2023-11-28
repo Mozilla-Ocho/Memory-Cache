@@ -30,7 +30,34 @@ function saveNote() {
   const file = new File([text], filename, { type: "text/plain" });
   const url = URL.createObjectURL(file);
   browser.downloads.download({ url, filename, saveAs: false });
+
+  document.querySelector("#text-note").value = "";
+  browser.storage.local.set({ noteDraft: "" });
+}
+
+function debounce(func, delay) {
+  let debounceTimer;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
+function saveNoteDraft() {
+  const noteDraft = document.querySelector("#text-note").value;
+  browser.storage.local.set({ noteDraft });
 }
 
 document.getElementById("save-pdf-button").addEventListener("click", savePDF);
 document.getElementById("save-note-button").addEventListener("click", saveNote);
+document
+  .getElementById("text-note")
+  .addEventListener("input", debounce(saveNoteDraft, 250));
+
+browser.storage.local.get("noteDraft").then((res) => {
+  if (res.noteDraft) {
+    document.querySelector("#text-note").value = res.noteDraft;
+  }
+});
