@@ -16,5 +16,11 @@
         "default_icon" : "icons/memwrite-32.png", 
         "default_title" : "Memory Cache", 
         "default_popup" : "popup/memory_cache.html"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content-script.js"]
+        }
+    ]
 }
