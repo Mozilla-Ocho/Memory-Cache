@@ -12,8 +12,19 @@ body {
 .introduction {
     background-image: url('../assets/images/header-background.png');
     background-repeat:no-repeat;
-    background-size: 100% 100%;
-}   
+    background-size: 675px 210.75px;
+    background-position: right;
+    width: 100%;
+    min-height: 201px;
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #F0EFEF;
+}
+
+.page-content {
+  background-color: white;
+}
 
 a {
     color: #180AB8;
@@ -27,5 +38,26 @@ a {
 .site-header {
     border-top-width: 5px;
     border-top-style: solid;
-    border-image: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) 1 0 0 0; 
+    border-image: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) 1 0 0 0;
+
+}
+
+.callout-left {
+  width: 75%;
+  padding-top: 5%;
+}
+
+.page-content {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #F0EFEF;
+
+}
+
+.post-list-heading {
+  font-size: 16px;
+}
+
+.post-link {
+  font-size: 16px;
 }
