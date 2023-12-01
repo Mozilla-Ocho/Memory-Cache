@@ -23,7 +23,7 @@ email: oerickson@mozilla.com
 description: MemoryCache is an experimental developer project to turn a local desktop environment into an on-device AI agent.
 # baseurl: "/Memory-Cache" # the subpath of your site, e.g. /blog
 url: "https://memorycache.ai/" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  misslivirose
+github_username:  Mozilla-Ocho
 
 # Build settings
 theme: minima
