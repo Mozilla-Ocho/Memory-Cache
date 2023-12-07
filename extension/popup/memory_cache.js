@@ -1,4 +1,4 @@
-const DOWNLOAD_SUBDIRECTORY = "MemoryCache";
+const DOWNLOAD_SUBDIRECTORY = "/MemoryCache";
 
 /*
 Generate a file name based on date and time
