@@ -1,4 +1,4 @@
-const DOWNLOAD_SUBDIRECTORY = "/MemoryCache";
+const DOWNLOAD_SUBDIRECTORY = "MemoryCache";
 
 /*
 Generate a file name based on date and time
@@ -12,7 +12,7 @@ function generateFileName(ext) {
 async function savePDF() {
   try {
     await browser.tabs.saveAsPDF({
-      toFileName: `${DOWNLOAD_SUBDIRECTORY}/PAGE${generateFileName("pdf")}`,
+      toFileName: `/${DOWNLOAD_SUBDIRECTORY}/PAGE${generateFileName("pdf")}`,
       silentMode: true, // silentMode requires a custom build of Firefox
     });
   } catch (_e) {
