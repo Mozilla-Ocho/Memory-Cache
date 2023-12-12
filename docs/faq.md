@@ -16,7 +16,7 @@ No. One of the core principles of MemoryCache is that you have full control over
 
 MemoryCache is using an old language model ([Nomic AI's gpt4all-j v1.3 groovy.ggml](https://huggingface.co/nomic-ai/gpt4all-j)) and primordial privateGPT because right now, this combo is the one that passes our criteria for the type of responses that it generates. This tech is almost a year old, and there have been many advancements in local AI that we'll be integrating in over time, but we're a small team exploring a lot of different subsets of this problem space and the quality of the insight generated is a sweet spot that we want to preserve. This is a temporary tradeoff, but we want to be careful to keep a consistent benchmark for insight generation.
 
-GPT-J was trained on the 'Pile' dataset, and the versions between the 1.0 release and 1.3 release also added the ShareGPT and Dolly datasettes. The Databricks Dolly dataset is licensed under the Creative Commons license with human contributions and wikipedia entries. The ShareGPT dataset is human prompts and ChatGPT output responses that were submitted by human users. The Pile dataset
+GPT-J was trained on the 'Pile' dataset, and the versions between the 1.0 release and 1.3 release also added the ShareGPT and Dolly datasettes. The Databricks Dolly dataset is licensed under the Creative Commons license with human contributions and wikipedia entries. The ShareGPT dataset is human prompts and ChatGPT output responses that were submitted by human users. 
 
 **Q: What kind of tasks would I use MemoryCache for?**
 
