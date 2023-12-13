@@ -1,13 +1,12 @@
 :root {
     --border-radius: 8px;
-
     --primary: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
 	--primary-hover:linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
-	--primary-focus: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
+	--primary-active: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
 	--primary-content: #000000;
 	--secondary: #180AB8;
 	--secondary-hover: #1609A6;
-	--secondary-focus: #130893;
+	--secondary-active: #130893;
 	--secondary-content: #fff;
 	--inactive-content:#F9F9F9;
 	--interaction-inactive:#B6B9BF;
