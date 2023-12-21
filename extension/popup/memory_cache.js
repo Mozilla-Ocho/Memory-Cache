@@ -3,23 +3,40 @@ const DOWNLOAD_SUBDIRECTORY = "MemoryCache";
 /*
 Generate a file name based on date and time
 */
-function generateFileName(ext) {
-  return (
-    new Date().toISOString().concat(0, 19).replaceAll(":", ".") + "." + ext
-  );
+
+function getTabTitle() {}
+
+async function generateFileName(ext) {
+  var subfileName =
+    new Date().toISOString().concat(0, 19).replaceAll(":", ".") + "." + ext;
+
+  return browser.tabs
+    .query({ active: true })
+    .then((tabs) => {
+      if (tabs && tabs[0] && tabs[0].title) {
+        console.log(tabs[0].title);
+        return tabs[0].title.replaceAll(" ", "-") + "-" + subfileName;
+      } else {
+        return subfileName;
+      }
+    })
+    .catch((error) => {
+      reject(`Error querying tabs: ${error}`);
+    });
 }
 
 async function savePDF() {
   try {
+    var fileName = await generateFileName("pdf");
     await browser.tabs.saveAsPDF({
-      toFileName: `/${DOWNLOAD_SUBDIRECTORY}/PAGE${generateFileName("pdf")}`,
+      toFileName: `/${DOWNLOAD_SUBDIRECTORY}/PAGE-${fileName}`,
       silentMode: true, // silentMode requires a custom build of Firefox
     });
   } catch (_e) {
     // Fallback to non-silent mode.
     await browser.tabs.saveAsPDF({
       // Omit the DOWNLOAD_SUBDIRECTORY prefix because saveAsPDF will not respect it.
-      toFileName: `PAGE${generateFileName("pdf")}`,
+      toFileName: `PAGE-${generateFileName("pdf")}`,
     });
   }
 }
@@ -37,19 +54,21 @@ function send(message) {
 }
 
 async function saveHtml() {
+  var fileName = await generateFileName("html");
   const text = await send({ action: "getPageText" });
-  const filename = `${DOWNLOAD_SUBDIRECTORY}/PAGE${generateFileName("html")}`;
-  const file = new File([text], filename, { type: "text/plain" });
+  fileName = `${DOWNLOAD_SUBDIRECTORY}/PAGE-${fileName}`;
+  const file = new File([text], fileName, { type: "text/plain" });
   const url = URL.createObjectURL(file);
-  browser.downloads.download({ url, filename, saveAs: false });
+  browser.downloads.download({ url, filename: fileName, saveAs: false });
 }
 
-function saveNote() {
+async function saveNote() {
+  var fileName = await generateFileName("txt");
   const text = document.querySelector("#text-note").value;
-  const filename = `${DOWNLOAD_SUBDIRECTORY}/NOTE${generateFileName("txt")}`;
-  const file = new File([text], filename, { type: "text/plain" });
+  fileName = `${DOWNLOAD_SUBDIRECTORY}/NOTE-${fileName}`;
+  const file = new File([text], fileName, { type: "text/plain" });
   const url = URL.createObjectURL(file);
-  browser.downloads.download({ url, filename, saveAs: false });
+  browser.downloads.download({ url, filename: fileName, saveAs: false });
 
   document.querySelector("#text-note").value = "";
   browser.storage.local.set({ noteDraft: "" });
