@@ -15,6 +15,9 @@ async function generateFileName(ext) {
         return subfileName;
       }
     })
+    .then ((fileName)=> {
+      return fileName.replaceAll(":","");
+    })
     .catch((error) => {
       reject(`Error querying tabs: ${error}`);
     });
@@ -52,6 +55,7 @@ async function saveHtml() {
   const text = await send({ action: "getPageText" });
   let fileName = await generateFileName("html");
   fileName = `${DOWNLOAD_SUBDIRECTORY}/PAGE-${fileName}`;
+  console.log(fileName);
   const file = new File([text], fileName, { type: "text/plain" });
   const url = URL.createObjectURL(file);
   browser.downloads.download({ url, filename: fileName, saveAs: false });
