@@ -52,7 +52,6 @@ socket.on("message", (raw) => {
   console.log("message", message);
 
   if (message.kind === "first_reply") {
-    const { message_sid, kind, text } = message;
     nextChatMessage = ChatHistoryMessage("");
     chatHistory.appendChild(nextChatMessage);
 
@@ -62,12 +61,12 @@ socket.on("message", (raw) => {
     });
     nextChatMessage.innerText += message.text;
   } else if (message.kind === "second_reply") {
-    const { message_sid, kind, text } = message;
-
     const reply = replies.get(message.message_sid);
     reply.second = message;
     // reply.chatMessage.innerText += "\n";
-    reply.chatMessage.innerText += `\n${message.text}\n`;
+    // reply.chatMessage.innerText += `\n${message.text}\n`;
+    // Send reply and text
+    reply.chatMessage.innerText += `\n[Replied in ${message.time} seconds.]\n${message.text}\n`;
   } else if (message.kind === "source_document") {
     const { message_sid, kind, text, source } = message;
     const reply = replies.get(message.message_sid);
