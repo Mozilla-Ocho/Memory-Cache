@@ -7,8 +7,8 @@ Tested with:
 - `node v18.18.2`
 - `npm 10.2.5`
 
-To build:
+To install dependencies, run `npm ci`.
 
-- `npm run build`
+To build the client, run `npm run build`.
 
-This directory only contains the client-side code. The server is implemented in a separate `privateGPT` repo.
+This directory only contains the client-side code. The server is implemented in [a separate `privateGPT` repo](https://github.com/johnshaughnessy/privateGPT).
