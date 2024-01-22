@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import "./style.css";
+import "./styles.css";
 
 function randomString() {
   return Math.random().toString(36).substring(2, 15);
@@ -43,17 +43,39 @@ function ChatHistoryMessage(message) {
 }
 let nextChatMessage = ChatHistoryMessage("Hello!");
 // chatHistory.appendChild(nextChatMessage);
+
+const replies = new Map();
+
 socket.on("message", (raw) => {
   console.log("Received message from server:", raw);
   const message = JSON.parse(raw);
   console.log("message", message);
 
-  if (message.isNewMessage) {
+  if (message.kind === "first_reply") {
+    const { message_sid, kind, text } = message;
     nextChatMessage = ChatHistoryMessage("");
     chatHistory.appendChild(nextChatMessage);
+
+    replies.set(message.message_sid, {
+      first: message,
+      chatMessage: nextChatMessage,
+    });
+    nextChatMessage.innerText += message.text;
+  } else if (message.kind === "second_reply") {
+    const { message_sid, kind, text } = message;
+
+    const reply = replies.get(message.message_sid);
+    reply.second = message;
+    // reply.chatMessage.innerText += "\n";
+    reply.chatMessage.innerText += `\n${message.text}\n`;
+  } else if (message.kind === "source_document") {
+    const { message_sid, kind, text, source } = message;
+    const reply = replies.get(message.message_sid);
+    reply.sourceDocuments = reply.sourceDocuments || [];
+    reply.sourceDocuments.push(message);
+    reply.chatMessage.innerText += `\n\n[${source}]\n${text}\n`;
   }
 
-  nextChatMessage.innerText += message.text;
   // We don't scroll to the bottom while the server is sending us messages.
 });
 

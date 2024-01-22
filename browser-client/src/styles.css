@@ -30,22 +30,22 @@
   --primary-color-lighter-1: hsl(
     var(--primary-color-hue),
     var(--primary-color-saturation),
-    calc(var(--primary-color-lightness) + 10%)
+    calc(var(--primary-color-lightness) + 15%)
   );
   --primary-color-lighter-2: hsl(
     var(--primary-color-hue),
     var(--primary-color-saturation),
-    calc(var(--primary-color-lightness) + 20%)
+    calc(var(--primary-color-lightness) + 30%)
   );
   --primary-color-darker-1: hsl(
     var(--primary-color-hue),
     var(--primary-color-saturation),
-    calc(var(--primary-color-lightness) - 10%)
+    calc(var(--primary-color-lightness) - 15%)
   );
   --primary-color-darker-2: hsl(
     var(--primary-color-hue),
     var(--primary-color-saturation),
-    calc(var(--primary-color-lightness) - 20%)
+    calc(var(--primary-color-lightness) - 30%)
   );
 
   --secondary-color: hsl(
@@ -56,22 +56,22 @@
   --secondary-color-lighter-1: hsl(
     var(--secondary-color-hue),
     var(--secondary-color-saturation),
-    calc(var(--secondary-color-lightness) + 10%)
+    calc(var(--secondary-color-lightness) + 15%)
   );
   --secondary-color-lighter-2: hsl(
     var(--secondary-color-hue),
     var(--secondary-color-saturation),
-    calc(var(--secondary-color-lightness) + 20%)
+    calc(var(--secondary-color-lightness) + 30%)
   );
   --secondary-color-darker-1: hsl(
     var(--secondary-color-hue),
     var(--secondary-color-saturation),
-    calc(var(--secondary-color-lightness) - 10%)
+    calc(var(--secondary-color-lightness) - 15%)
   );
   --secondary-color-darker-2: hsl(
     var(--secondary-color-hue),
     var(--secondary-color-saturation),
-    calc(var(--secondary-color-lightness) - 20%)
+    calc(var(--secondary-color-lightness) - 30%)
   );
 
   --error-color: hsl(
@@ -82,22 +82,22 @@
   --error-color-lighter-1: hsl(
     var(--error-color-hue),
     var(--error-color-saturation),
-    calc(var(--error-color-lightness) + 10%)
+    calc(var(--error-color-lightness) + 15%)
   );
   --error-color-lighter-2: hsl(
     var(--error-color-hue),
     var(--error-color-saturation),
-    calc(var(--error-color-lightness) + 20%)
+    calc(var(--error-color-lightness) + 30%)
   );
   --error-color-darker-1: hsl(
     var(--error-color-hue),
     var(--error-color-saturation),
-    calc(var(--error-color-lightness) - 10%)
+    calc(var(--error-color-lightness) - 15%)
   );
   --error-color-darker-2: hsl(
     var(--error-color-hue),
     var(--error-color-saturation),
-    calc(var(--error-color-lightness) - 20%)
+    calc(var(--error-color-lightness) - 30%)
   );
 }
 
