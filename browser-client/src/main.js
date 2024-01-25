@@ -1,17 +1,6 @@
 import { io } from "socket.io-client";
 import "./styles.css";
 
-function randomString() {
-  return Math.random().toString(36).substring(2, 15);
-}
-
-function OutgoingMessage(text) {
-  return {
-    message_sid: randomString(),
-    text,
-  };
-}
-
 const socket = io(`http://${window.location.hostname}:5000`);
 socket.on("connect", () => {
   console.log("connected");
@@ -88,7 +77,11 @@ function sendChatMessage() {
   chatHistory.scrollTop = chatHistory.scrollHeight;
 
   // Send the message to the server
-  socket.send(JSON.stringify(OutgoingMessage(text))); // This will be sent as a JSON string
+  socket.send(
+    JSON.stringify({
+      text,
+    }),
+  ); // This will be sent as a JSON string
   console.log("Message sent to server: " + text);
 }
 
