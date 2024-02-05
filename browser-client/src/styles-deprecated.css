@@ -1,6 +1,6 @@
 :root {
   /* Font */
-  --font-family: "Roboto", sans-serif;
+  --font-family: "Work Sans", sans-serif;
   --font-size-sm: 12px;
   --font-size-md: 16px;
   --font-size-lg: 20px;
@@ -21,7 +21,6 @@
   --error-color-lightness: 50%;
 
   /* Derived colors */
-
   --primary-color: hsl(
     var(--primary-color-hue),
     var(--primary-color-saturation),
