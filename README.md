@@ -8,7 +8,7 @@ Memory Cache is a project that allows you to save a webpage while you're browsin
 ## Prerequisites 
 1. Set up [privateGPT](https://github.com/imartinez/privateGPT) - either using the primordial checkpoint, or from my fork.
 2. Create a symlink between a subdirectory in your default Downloads folder called 'MemoryCache' and a 'MemoryCache' directory created inside of /PrivateGPT/source_documents/MemoryCache 
-3. Apply patch to Firefox to add the `printerSettings.silentMode` property to the Tabs API. [See wiki page for instructions](https://github.com/misslivirose/MemoryCacheExt/wiki/Modifying-Firefox-to-use-Memory-Cache)
+3. Apply patch to Firefox to add the `printerSettings.silentMode` property to the Tabs API. [See wiki page for instructions](https://github.com/Mozilla-Ocho/Memory-Cache/wiki/Modifying-Firefox-to-Save-PDF-files-automagically-to-MemoryCache)
 4. Copy /scripts/run_ingest.sh into your privateGPT directory and run it to start `inotifywait` watching your downloads directory for new content
 
 ## Setting up the Extension
