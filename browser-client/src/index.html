@@ -10,21 +10,25 @@
         <title>Kate's Memory Cache</title>
     </head>
     <body>
-        <div class="mc-body-container">
+        <div class="mc-main-container">
             <div class="mc-header">
                 <div class="mc-row">
                     <img class="mc-logo" src="https://raw.githubusercontent.com/Mozilla-Ocho/Memory-Cache/f406a92a3bf8997697e666e1900916af77f134eb/browser-client/src/img/MC-Logo.png">
                     <p> &bull; Kate's Work Cache</p>
                 </div>
-                </div>
-            <div class="mc-body-section">
             </div>
-            <div class="mc-body-section mc-row">
-                <div class="col">
-                    <textarea class="mc-text-field" id="chat-textarea"></textarea>
-                    <button id="send-button" class="mc-button mc-primary-btn">Send query</button>
+            <div class="mc-body-container">
+                <div class="mc-row">
+                    <div class="mc-col mc-query">
+                        <label for="chat-textarea">What are you looking for?</label>
+                        <textarea class="mc-text-field" id="chat-textarea"></textarea>
+                    </div>
+                    <button id="send-button" class="mc-button mc-query-btn">
+                        <img src="https://raw.githubusercontent.com/Mozilla-Ocho/Memory-Cache/f406a92a3bf8997697e666e1900916af77f134eb/browser-client/src/img/MC-Brainprint1.svg" width="16px"/>
+                        Send query</button>
                 </div>
-                <div class="col">
+                <div class="mc-row">
+
                     <div class="mc-chat-history" id="chat-history"></div>
                 </div>
             </div>
