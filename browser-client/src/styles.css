@@ -1,9 +1,9 @@
 :root {
   /* Font */
   --font-family: "Work Sans", sans-serif;
-  --font-size-sm: 12px;
-  --font-size-md: 16px;
-  --font-size-lg: 20px;
+  --font-size-sm: .8em;
+  --font-size-md: 1em;
+  --font-size-lg: 1.6em;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
 
@@ -30,8 +30,9 @@
 	--success-content: #000;
 	--error: #f87272;
 	--error-content: #000;
-	--border-1: #EDEDED;
+	--border-1: #DDD;
 
+ /* Layout spacer utilities */
 	--xxs:4px;
 	--xs:8px;
 	--sm:12px;
@@ -40,13 +41,14 @@
 	--xl:40px;
 }
 
+ /* Resets */
 html {
 	padding:0;
 }
 
 body {
 	margin:0;
-	font-family:'Work Sans', sans-serif;
+	font-family:var(--font-family);
 	font-size: 1em;
 	background: var(--base-200);
 }
@@ -66,16 +68,28 @@ body {
 	justify-content: space-between;
 }
 .mc-col {
+	display:flex;
 	flex-direction: column;
-	flex:1;
 }
 .mc-row {
+	display:flex;
 	flex-direction: row;
-	flex:1;
+	vertical-align: middle;
 }
 .mc-header {
 	width:100%;
-	border-bottom:1px solid var(--border-1);
+	border-bottom: .1em solid var(--border-1);
+	padding: var(--md) var(--sm);
+	font-size:var(--font-size-md);
+}
+.mc-header p {
+	padding: 0;
+	margin:auto 0;
+}
+.mc-logo {
+	width: 145px;
+	height: fit-content;
+	margin-right: var(--sm);
 }
 
 /* Buttons */
@@ -104,16 +118,15 @@ body {
 	margin-bottom: var(--sm);
 	width:100%;
 }
+
 .mc-chat-history {
   /* width: 800px;
   height: 400px; */
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  /* rounded corners */
-  border-radius: 5px;
-  background-color: var(--secondary-color-lighter-2);
 }
+
 .mc-chat-history-message {
   padding: 10px;
   margin-bottom: 10px;
