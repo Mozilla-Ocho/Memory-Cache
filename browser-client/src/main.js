@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import "./styles.css";
 
-const socket = io(`http://${window.location.hostname}:5000`);
+const socket = io(`http://${window.location.hostname}:5001`);
 socket.on("connect", () => {
   console.log("connected");
 });

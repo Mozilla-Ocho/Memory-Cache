@@ -5,7 +5,7 @@
   --font-size-md: 1em;
   --font-size-lg: 1.6em;
   --font-weight-normal: 400;
-  --font-weight-bold: 700;
+  --font-weight-bold: 500;
 
  /* Avoiding using representational numbers for the styling system at this point to keep things simple */
 	--primary: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
@@ -32,6 +32,8 @@
 	--error-content: #000;
 	--border-1: #DDD;
 
+	--border-radius: 4px;
+
  /* Layout spacer utilities */
 	--xxs:4px;
 	--xs:8px;
@@ -44,6 +46,7 @@
  /* Resets */
 html {
 	padding:0;
+	font-family:var(--font-family);
 }
 
 body {
@@ -110,6 +113,7 @@ body {
     text-align: center;
     color: #565D6D;
     padding:8px;
+	border:none;
 }
 .mc-primary-btn {
     background: var(--primary);
@@ -129,15 +133,28 @@ body {
 /* Chat + Text */
 .mc-query {
 	margin-right:var(--lg);
+	margin-bottom:var(--lg);
 }
 label {
 	margin-bottom: var(--xs);
 }
-textarea .mc-text-field  {
+textarea  {
 	flex:1;
 	max-width: 100%;
-	max-height: 300px;
+	padding: var(--sm);
+	font-family: var(--font-family);
+	font-size: var(--font-size-md);
+	border: 1px solid var(--border-1);
+	resize: none;
+	box-sizing: border-box;
+	min-height: 90px;
+	line-height: 150%;
 }
+
+#chat-textarea:focus-visible {
+outline:2px solid var(--secondary);
+}
+
 .mc-query-btn {
 	background: var(--primary);
 	display: flex;
@@ -146,24 +163,27 @@ textarea .mc-text-field  {
 	max-height: 100%;
 	max-width: 100%;
 	margin: auto 0;
+	font-weight: var(--font-weight-bold);
+	font-size: .9em;
+	font-family: var(--font-family);
 }
 .mc-query-btn img {
 	margin-right:var(--sm);
 }
 .mc-chat-history {
-  /* width: 800px;
-  height: 400px; */
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
+	width: 800px;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	max-height: 65vh;
+	padding: var(--sm);
 }
 
 .mc-chat-history-message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  align-self: flex-start;
-  border-radius: 5px;
-  background-color: var(--primary-color-darker-2);
-  color: var(--primary-color-lighter-2);
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	align-self: flex-start;
+	border-radius: 5px;
+	background: var(--base-100);
 }
