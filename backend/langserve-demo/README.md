@@ -63,7 +63,7 @@ We use `python 3.10` (not `3.11` or later)  in `Dockerfile.cuda` because `faiss-
 
 ### git diff
 
-View the relevant diff on github, here: https://github.com/Mozilla-Ocho/Memory-Cache/compare/browser-client...johnshaughnessy:Memory-Cache:backend?expand=1
+View the relevant diff on github, here: https://github.com/Mozilla-Ocho/Memory-Cache/compare/main...johnshaughnessy:Memory-Cache:backend?expand=1
 
 
 
