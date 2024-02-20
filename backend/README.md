@@ -61,6 +61,10 @@ We use `python 3.11` (not `3.12` or later)  in `Dockerfile.cpu` because `faiss-c
 
 We use `python 3.10` (not `3.11` or later)  in `Dockerfile.cuda` because `faiss-gpu` only supports up to `3.10` at the time of this writing: https://pypi.org/project/faiss-gpu/
 
+### git diff
+
+View the relevant diff on github, here: https://github.com/Mozilla-Ocho/Memory-Cache/compare/browser-client...johnshaughnessy:Memory-Cache:backend?expand=1
+
 
 
 
