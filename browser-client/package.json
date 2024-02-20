@@ -1,0 +1,21 @@
+{
+  "name": "memory-cache-browser-client",
+  "version": "1.0.0",
+  "description": "A browser client for memory cache.",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "author": "",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.4",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.2"
+  }
+}

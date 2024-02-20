@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <title>Kate's Memory Cache</title>
+    </head>
+    <body>
+        <div class="mc-main-container">
+            <div class="mc-header">
+                <div class="mc-row">
+                    <img class="mc-logo" src="https://raw.githubusercontent.com/Mozilla-Ocho/Memory-Cache/f406a92a3bf8997697e666e1900916af77f134eb/browser-client/src/img/MC-Logo.png">
+                    <p> &bull; Kate's Work Cache</p>
+                </div>
+            </div>
+            <div class="mc-body-container">
+                <div class="mc-row">
+                    <div class="mc-col mc-query">
+                        <label for="chat-textarea">What would you like to know?</label>
+                        <textarea class="mc-text-field" id="chat-textarea"></textarea>
+                    </div>
+                    <button id="send-button" class="mc-button mc-query-btn">
+                        <img src="https://raw.githubusercontent.com/Mozilla-Ocho/Memory-Cache/f406a92a3bf8997697e666e1900916af77f134eb/browser-client/src/img/MC-Brainprint1.svg" width="16px"/>
+                        Send query</button>
+                </div>
+                <div class="mc-row">
+                    <div class="mc-chat-history" id="chat-history"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
