@@ -18,7 +18,7 @@ A development environment for working on `hub` is provided by the Dockerfile `do
 
 The basic workflow is to build this image and then bind mount the source code when you run the container. You will also want to bind mount a `LLAMAFILES_DIR` pointing to a directory where you'll store `llamafile`s. These can be quite large, so we avoid re-downloading them every time we start the container.
 
-When you are satisfied with development, you will want to package the `hub` as an executable with `PyInstaller`. Since `PyInstaller` does not support cross-compilation, you will need to run the build commands on the platform you are targeting. For example, to build a MacOS executable, you will need to run the build commands on a MacOS machine. Dockerfiles for running the build commands are provided in the `docker` directory. 
+When you are satisfied with development, you will want to package the `hub` as an executable with `PyInstaller`. Since `PyInstaller` does not support cross-compilation, you will need to run the build commands on the platform you are targeting. For example, to build a MacOS executable, you will need to run the build commands on a MacOS machine. 
 
 Examples of how to build and use the development and builder images are provided in the sections below.
 
@@ -59,6 +59,42 @@ docker run -it --rm \
 ```
 
 The builder will generate `memory-cache-hub-gnu-linux` in the `dist` directory.
+
+## Building for MacOS
+
+On MacOS, we use a python virtual environment to install the dependencies and run the build commands.
+
+Create the virtual environment:
+
+```bash
+python3.11 -m venv venv
+source venv/bin/activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements/hub-base.txt \
+    -r requirements/hub-cpu.txt \
+    -r requirements/hub-builder.txt
+```
+
+Build the executable:
+    
+```bash
+python3.11 src/hub_build_macos.py
+```
+
+The builder will generate `memory-cache-hub-macos` in the `dist` directory.
+
+When you are done, deactivate the virtual environment:
+
+``` sh
+deactivate
+```
+
+If you want to remove the virtual environment, just delete the `venv` directory.
+
 
 ## Plan/TODO
 
