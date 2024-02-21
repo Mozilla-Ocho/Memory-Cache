@@ -95,6 +95,41 @@ deactivate
 
 If you want to remove the virtual environment, just delete the `venv` directory.
 
+## Building on Windows
+
+On Windows, we use a python virtual environment to install the dependencies and run the build commands.
+
+Install `python 3.11` from the [official website](https://www.python.org/downloads/).
+
+Create the virtual environment:
+
+```bash
+py -3.11 -m venv venv
+venv\Scripts\activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements\hub-base.txt -r requirements\hub-cpu.txt -r requirements\hub-builder.txt
+```
+
+Build the executable:
+
+```bash
+python src\hub_build_windows.py
+```
+
+The builder will generate `memory-cache-hub-windows.exe` in the `dist` directory.
+
+When you are done, deactivate the virtual environment:
+
+``` sh
+deactivate
+```
+
+If you want to remove the virtual environment, just delete the `venv` directory.
+
 
 ## Plan/TODO
 

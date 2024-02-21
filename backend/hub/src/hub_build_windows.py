@@ -14,5 +14,5 @@ PyInstaller.__main__.run([
     '--onefile',  # Bundle everything into a single executable
     # '--hidden-import=module_name',  # Uncomment and replace with actual module names if there are hidden imports
     '--clean',  # Clean PyInstaller build folder before building
-    '--name=memory-cache-hub-macos',
+    '--name=memory-cache-hub-windows',
 ] + [f'--add-data={src}{os.pathsep}{dst}' for src, dst in additional_files])
