@@ -1,0 +1,4 @@
+*.log
+*.spec
+dist/
+build/

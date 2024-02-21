@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir -r requirements-cpu.txt
 
 COPY . .
 
-CMD [ "python", "./serve.py" ]
+CMD [ "python3", "./serve.py" ]
