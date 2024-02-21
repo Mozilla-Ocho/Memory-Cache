@@ -41,9 +41,15 @@ docker run \
 
 
 ``` sh
-docker build -f Dockerfile.plm-gnu-linux-builder -t memory-cache/plm-gnu-linux-builder .
+docker build -f Dockerfile.plm-builder-gnu-linux -t memory-cache/plm-builder-gnu-linux .
 ```
 
 ``` sh
+docker run \
+  --name plm-builder-gnu-linux \
+  -it \
+  --rm \
+  -v ./:/usr/src/app/ \
+  memory-cache/plm-builder-gnu-linux
 ```
 
