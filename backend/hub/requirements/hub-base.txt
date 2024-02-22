@@ -1,3 +1,4 @@
+aiofiles
 bs4
 fastapi
 langchain

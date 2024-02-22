@@ -37,7 +37,8 @@ docker run -it --rm \
   -v $(pwd):/hub \
   -v ~/media/llamafile:/llamafiles \
   -e LLAMAFILES_DIR=/llamafiles \
-  memory-cache/hub-dev
+  memory-cache/hub-dev \
+  python3 src/hub.py
 ```
 
 Replace `~/media/llamafile` with the path to the directory where you want to store `llamafile`s.
