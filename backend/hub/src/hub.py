@@ -1,7 +1,8 @@
-from llamafile_manager import LlamafileManager, update_tqdm
+from llamafile_manager import update_tqdm, get_llamafile_manager
 from llamafile_infos import llamafile_infos
 from langchain_community.llms.llamafile import Llamafile
 from typing import Generator
+from typing import List
 from async_utils import start_async_loop, run
 from tqdm import tqdm
 import asyncio
@@ -10,18 +11,25 @@ import os
 import subprocess
 import requests
 import time
+import webbrowser
+import uvicorn
+from fastapi import FastAPI
+from langserve import add_routes
+from time import sleep
+import webapp
+from webapp import app
+
+llamafiles_dir = os.environ.get('LLAMAFILES_DIR')
+if not llamafiles_dir:
+    raise ValueError("LLAMAFILES_DIR environment variable is not set")
+manager = get_llamafile_manager(llamafiles_dir)
 
 async def main():
+
     loop = asyncio.new_event_loop()
     t = threading.Thread(target=start_async_loop, args=(loop,), daemon=True)
     t.start()
 
-    llamafiles_dir = os.environ.get('LLAMAFILES_DIR')
-
-    if not llamafiles_dir:
-        raise ValueError("LLAMAFILES_DIR environment variable is not set")
-
-    manager = LlamafileManager(llamafiles_dir)
 
     print("Llamafiles directory:", manager.llamafiles_dir)
 
@@ -70,8 +78,6 @@ async def main():
             time.sleep(1)
 
     #llm = Llamafile()
-    llm = Llamafile(streaming=True)
-    llm.base_url = "http://localhost:8800"
 
     # Get user input in a loop. If user types "exit", break the loop.
     while True:
@@ -89,41 +95,38 @@ async def main():
             assert isinstance(token, str)
             print(token, end="", flush=True)
 
-        # response = llm.invoke(user_input)
-        # print(response)
-
-        # # Prepare the a dictionary that will be sent to the server:
-        # data = {
-        #     "stream": False,
-        #     "n_predict": 400,
-        #     "temperature": 0.7,
-        #     "stop": ["</s>", "Llama:", "User:"],
-        #     "repeat_last_n": 256,
-        #     "repeat_penalty": 1.18,
-        #     "top_k": 40,
-        #     "top_p": 0.5,
-        #     "tfs_z": 1,
-        #     "typical_p": 1,
-        #     "presence_penalty": 0,
-        #     "frequency_penalty": 0,
-        #     "mirostat": 0,
-        #     "mirostat_tau": 5,
-        #     "mirostat_eta": 0.1,
-        #     "grammar": "",
-        #     "n_probs": 0,
-        #     "image_data": [],
-        #     "cache_prompt": True,
-        #     "slot_id": -1,
-        #     "prompt": "This is a conversation between User and Llama, a friendly chatbot. Llama is helpful, kind, honest, good at writing, and never fails to answer any requests immediately and with precision.\n\nUser:" + user_input + "\nLlama:"
-        # }
-
-        # # Or, use requests to send the prompt to the server:
-        # post_req = requests.post("http://localhost:8800/completion", json=data)
-        # print(post_req.text)
-
     print("Stopping all llamafile servers...")
     manager.stop_all_llamafiles()
     print("All llamafile servers stopped.")
 
-if __name__ == "__main__":
+
+
+def run_async_main():
     asyncio.run(main())
+
+def run_async_fastapi():
+
+    llm = Llamafile(streaming=True)
+    llm.base_url = "http://localhost:8800"
+
+    add_routes(app,
+        llm,
+        path="/llm")
+
+    # Need to allow POST requests to the server by running the following command:
+
+    uvicorn.run(app, host="localhost", port=8001)
+
+if __name__ == "__main__":
+    t2 = threading.Thread(target=run_async_fastapi, daemon=True)
+    t2.start()
+
+    sleep(1)
+
+    webbrowser.open("http://localhost:8001/", new=0)
+
+    t = threading.Thread(target=run_async_main, daemon=True)
+    t.start()
+
+    t.join()
+    t2.join()

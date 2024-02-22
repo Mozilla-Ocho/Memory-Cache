@@ -45,12 +45,23 @@ async def update_tqdm(pbar, handle: DownloadHandle):
 
 class RunHandle:
     def __init__(self):
+        self.llamafile_name = None
         self.filename = None
         self.args = []
         self.process = None
 
     def __repr__(self):
         return f"RunHandle(filename={self.filename}, args={self.args}, process={self.process})"
+
+_instance = None
+
+def get_llamafile_manager(llamafiles_dir: str = None):
+    global _instance
+    if _instance is None:
+        if llamafiles_dir is None:
+            raise ValueError("Must specify llamafiles_dir when creating the LlamafileManager instance")
+        _instance = LlamafileManager(llamafiles_dir)
+    return _instance
 
 class LlamafileManager:
     def __init__(self, llamafiles_dir: str):
@@ -77,6 +88,7 @@ class LlamafileManager:
             raise ValueError(f"llamafile {name} is not available")
         handle = RunHandle()
         self.run_handles.append(handle)
+        handle.llamafile_name = name
         handle.filename = os.path.join(self.llamafiles_dir, name)
         # Print the file path, and check if the file exists
         print(handle.filename)
