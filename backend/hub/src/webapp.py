@@ -1,8 +1,12 @@
 from fastapi import FastAPI
+from langserve import add_routes
 from typing import List
-from llamafile_manager import get_llamafile_manager
+from llamafile_manager import update_tqdm, get_llamafile_manager
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
+from langchain_community.llms.llamafile import Llamafile
+from async_utils import run, get_my_loop
+from tqdm import tqdm
 import os
 import sys
 
@@ -29,14 +33,29 @@ async def list_llamafiles():
 async def has_llamafile(name: str):
     return manager.has_llamafile(name)
 
+
+class DownloadLlamafileRequest(BaseModel):
+    url: str
+    name: str
+
 @app.post("/api/llamafile_manager/download_llamafile")
-async def download_llamafile(url: str, name: str):
-    handle = manager.download_llamafile(url, name)
-    return handle
+async def download_llamafile(request: DownloadLlamafileRequest):
+    loop = get_my_loop()
+    print("HELLO WORLD!!")
+    if manager.has_llamafile(request.name):
+        return "already downloaded"
+
+    handle = manager.download_llamafile(request.url, request.name)
+    print("Downloading llamafile", request.name)
+    pbar = tqdm(total=handle.content_length, unit="B", unit_scale=True)
+    run([handle.coroutine, update_tqdm(pbar, handle)], loop)
+
+    return request
 
 @app.post("/api/llamafile_manager/download_progress")
-async def download_progress(url: str, name: str):
-    handle = next(h for h in manager.download_handles if h.url == url and h.filename == name)
+async def download_progress(request: DownloadLlamafileRequest):
+    handle = next((h for h in manager.download_handles if h.llamafile_name == request.name), None)
+
     if handle is None:
         return 0
     return handle.progress()
@@ -75,11 +94,24 @@ else:
     # The application is running in a normal Python environment
     bundle_dir = os.path.dirname(os.path.abspath(__file__))
 
-static_files_dir = os.path.join(bundle_dir, 'static')
-app.mount("/", StaticFiles(directory=static_files_dir, html=True), name="static")
-
 #static_files_dir = os.environ.get('STATIC_FILES_DIR', 'static')
 #app.mount("/", StaticFiles(directory=static_files_dir, html=True), name="static")
 
 # Test the above method with curl:
 # curl -XPOST -H "Content-Type: application/json" -d '{"name": "mistral-7b-instruct-v0.2.Q5_K_M.llamafile"}' http://localhost:8001/api/llamafile_manager/is_llamafile_running
+
+llm = Llamafile(streaming=True)
+llm.base_url = "http://localhost:8800"
+add_routes(app, llm, path="/llm")
+
+static_files_dir = os.path.join(bundle_dir, 'static')
+app.mount("/static", StaticFiles(directory=static_files_dir, html=True), name="static")
+
+class AddInput(BaseModel):
+    number1: float
+    number2: float
+
+@app.post("/add")
+def add_numbers(add_input: AddInput):
+    result = add_input.number1 + add_input.number2
+    return {"result": result}

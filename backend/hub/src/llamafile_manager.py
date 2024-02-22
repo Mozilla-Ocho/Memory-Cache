@@ -11,6 +11,7 @@ class DownloadHandle:
     def __init__(self):
         self.url = None
         self.filename = None
+        self.llamafile_name = None
         self.content_length = 0
         self.written = 0
         self.coroutine = None
@@ -79,6 +80,7 @@ class LlamafileManager:
         handle = DownloadHandle()
         self.download_handles.append(handle)
         handle.url = url
+        handle.llamafile_name = name
         handle.filename = os.path.join(self.llamafiles_dir, name)
         handle.coroutine = download(handle)
         return handle

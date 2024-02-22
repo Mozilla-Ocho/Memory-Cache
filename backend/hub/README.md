@@ -12,6 +12,14 @@ The `hub` is a central component of Memory Cache:
 - It interacts with a vector database to ingest and retrieve document fragments.
 - It synthesizes queries and prompts for backend `llm`s on behalf of the user.
 
+## Usage
+```sh
+STATIC_FILES_DIR=./static \
+LLAMAFILES_DIR=~/media/llamafile \
+LLAMAFILE_SERVER_BASE_URL="http://localhost:8800" \
+./dist/memory-cache-hub-gnu-linux
+```
+
 ## Development
 
 You can develop `hub` on your local machine or using the provided Docker development environment.
