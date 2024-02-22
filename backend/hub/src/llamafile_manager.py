@@ -4,8 +4,7 @@ import aiohttp
 import aiofiles
 import asyncio
 import subprocess
-
-
+import psutil
 
 class DownloadHandle:
     def __init__(self):
@@ -81,19 +80,32 @@ class LlamafileManager:
             if not os.access(handle.filename, os.X_OK):
                 os.chmod(handle.filename, 0o755)
         handle.args = args
-        # print(["sh", "-c", handle.filename, *args ])
-        # handle.process = subprocess.Popen(["sh", "-c", handle.filename, *args ])
-
         cmd = f"{handle.filename} {' '.join(args)}"
         handle.process = subprocess.Popen(["sh", "-c", cmd])
 
         return handle
 
+
     def stop_llamafile(self, handle: RunHandle):
+        print(f"Stopping process {handle.process.pid}")
         if handle.process.poll() is None:
-            handle.process.terminate()
-            handle.process.wait()
+            try:
+                parent = psutil.Process(handle.process.pid)
+                children = parent.children(recursive=True)  # Get all child processes
+                for child in children:
+                    print(f"Terminating child process {child.pid}, {child.name()}")
+                    child.terminate()  # Terminate each child
+                gone, still_alive = psutil.wait_procs(children, timeout=3, callback=None)
+                for p in still_alive:
+                    p.kill()  # Force kill if still alive after timeout
+                print(f"Terminating parent process {parent.pid}, {parent.name()}")
+                handle.process.terminate()  # Terminate the parent process
+                handle.process.wait()  # Wait for the parent process to terminate
+            except psutil.NoSuchProcess:
+                print(f"Process {handle.process.pid} does not exist anymore.")
             self.run_handles.remove(handle)
+        else:
+            print(f"Process {handle.process.pid} is not running")
 
     def stop_all_llamafiles(self):
         for handle in self.run_handles:

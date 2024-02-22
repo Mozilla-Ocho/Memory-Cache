@@ -9,3 +9,4 @@ langserve[all]
 requests ~= 2.31
 tqdm
 uvicorn
+psutil
