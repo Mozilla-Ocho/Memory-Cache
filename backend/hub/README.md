@@ -12,7 +12,13 @@ The `hub` is a central component of Memory Cache:
 - It interacts with a vector database to ingest and retrieve document fragments.
 - It synthesizes queries and prompts for backend `llm`s on behalf of the user.
 
-## How to Develop
+## Development
+
+You can develop `hub` on your local machine or using the provided Docker development environment.
+
+If you are developing on your local machine, you will need to install the dependencies listed in the `requirements/` files. We recommend using a virtual environment to manage these dependencies, as per the instructions in the various "Building..." sections below. 
+
+### Docker Development Environment
 
 A development environment for working on `hub` is provided by the Dockerfile `docker/Dockerfile.hub-dev`. 
 
@@ -22,7 +28,7 @@ When you are satisfied with development, you will want to package the `hub` as a
 
 Examples of how to build and use the development and builder images are provided in the sections below.
 
-## Development
+#### Using the Docker Development Environment
 
 Build the development image:
 
@@ -42,7 +48,19 @@ docker run -it --rm \
   python3 src/hub.py
 ```
 
-or, if you have a GPU:
+Replace `~/media/llamafile` with the path to the directory where you want to store `llamafile`s.
+
+#### Using the Docker Development Environment with NVIDIA GPUs
+
+If you have an NVIDIA GPU, you'll need to make sure that you have the NVIDIA Container Toolkit installed and that you have the appropriate drivers and libraries installed on your host machine. A script for configuring an Ubuntu 22.04 machine can be found in the [OSAI-Ubuntu](https://github.com/johnshaughnessy/osai-ubuntu) repository.
+
+Once you've set up your host machine, build the development image with CUDA support:
+
+```sh
+docker build -f docker/Dockerfile.hub-dev-cuda -t memory-cache/hub-dev-cuda .
+```
+
+Then run the development container with CUDA support:
 
 ```sh
 docker run -it --rm \
@@ -50,12 +68,12 @@ docker run -it --rm \
   -v $(pwd):/hub \
   -v ~/media/llamafile:/llamafiles \
   -e LLAMAFILES_DIR=/llamafiles \
+  -e CUDA_VISIBLE_DEVICES=1 \
   -p 8800:8800 \
-  memory-cache/hub-dev \
+  memory-cache/hub-dev-cuda \
   python3 src/hub.py
 ```
 
-Replace `~/media/llamafile` with the path to the directory where you want to store `llamafile`s.
 
 ## Building for GNU/Linux
 

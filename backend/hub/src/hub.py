@@ -41,7 +41,10 @@ async def main():
         print("Download finished.")
 
     print("Running", llamafile_name_llava_v1_5_7b_q4)
-    run_handle = manager.run_llamafile(llamafile_name_llava_v1_5_7b_q4, ["--host", "0.0.0.0", "--port", "8800"])
+    args = ["--host", "0.0.0.0", "--port", "8800"]
+    if os.environ.get('MEMORY_CACHE_ENABLE_GPU'):
+        args.append('-ngl 999')
+    run_handle = manager.run_llamafile(llamafile_name_llava_v1_5_7b_q4, args)
     print("Process started:", run_handle)
 
     while True:
@@ -92,7 +95,9 @@ async def main():
         post_req = requests.post("http://localhost:8800/completion", json=data)
         print(post_req.text)
 
-    exit()
+    print("Stopping all llamafile servers...")
+    manager.stop_all_llamafiles()
+    print("All llamafile servers stopped.")
 
 if __name__ == "__main__":
     asyncio.run(main())

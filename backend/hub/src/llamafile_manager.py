@@ -94,3 +94,8 @@ class LlamafileManager:
             handle.process.terminate()
             handle.process.wait()
             self.run_handles.remove(handle)
+
+    def stop_all_llamafiles(self):
+        for handle in self.run_handles:
+            self.stop_llamafile(handle)
+        self.run_handles.clear()
