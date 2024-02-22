@@ -43,6 +43,7 @@ docker run -it --rm \
   -v $(pwd):/hub \
   -v ~/media/llamafile:/llamafiles \
   -e LLAMAFILES_DIR=/llamafiles \
+  -e LLAMAFILE_SERVER_BASE_URL="http://localhost:8800" \
   -p 8800:8800 \
   memory-cache/hub-dev \
   python3 src/hub.py
