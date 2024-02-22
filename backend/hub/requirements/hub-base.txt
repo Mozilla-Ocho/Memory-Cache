@@ -1,5 +1,6 @@
 aiofiles
 bs4
+certifi
 fastapi
 langchain
 langchainhub

@@ -2,6 +2,7 @@ import os
 import asyncio
 import aiohttp
 import aiofiles
+#import certifi
 import asyncio
 import subprocess
 import psutil
@@ -21,7 +22,12 @@ class DownloadHandle:
         return f"DownloadHandle(url={self.url}, filename={self.filename}, content_length={self.content_length}, written={self.written})"
 
 async def download(handle: DownloadHandle):
-    async with aiohttp.ClientSession() as session:
+    # BUG On MacOS, https requests failed unless I disabled ssl checking.
+    # TODO Fix ssl issue on MacOS
+    #      This github issue may be related:
+    #      https://github.com/aio-libs/aiohttp/issues/955
+    #async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
         async with session.get(handle.url) as response:
             handle.content_length = int(response.headers.get('content-length', 0))
             handle.written = 0

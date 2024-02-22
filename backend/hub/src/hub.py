@@ -29,16 +29,17 @@ async def main():
         print("Llamafile", llamafile_name_llava_v1_5_7b_q4, "is available.")
 
     else:
-        print("Downloading", llamafile_name_llava_v1_5_7b_q4)
+        print("Downloading llamafile", llamafile_name_llava_v1_5_7b_q4)
         download_handle = manager.download_llamafile(llamafile_url_llava_v1_5_7b_q4, llamafile_name_llava_v1_5_7b_q4)
-        pbar = tqdm(total=download_handle.content_length, unit="KB", unit_scale=True)
+        pbar = tqdm(total=download_handle.content_length, unit="B", unit_scale=True)
         finish_event = run([download_handle.coroutine, update_tqdm(pbar, download_handle)], loop)
 
     if finish_event:
         finish_event.wait()
-        if pbar:
-            pbar.close()
+        pbar.close()
         print("Download finished.")
+    else:
+        print("Llamafile is already available.")
 
     print("Running", llamafile_name_llava_v1_5_7b_q4)
     args = ["--host", "0.0.0.0", "--port", "8800"]
