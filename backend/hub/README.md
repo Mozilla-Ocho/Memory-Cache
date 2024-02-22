@@ -37,6 +37,20 @@ docker run -it --rm \
   -v $(pwd):/hub \
   -v ~/media/llamafile:/llamafiles \
   -e LLAMAFILES_DIR=/llamafiles \
+  -p 8800:8800 \
+  memory-cache/hub-dev \
+  python3 src/hub.py
+```
+
+or, if you have a GPU:
+
+```sh
+docker run -it --rm \
+  --gpus all \
+  -v $(pwd):/hub \
+  -v ~/media/llamafile:/llamafiles \
+  -e LLAMAFILES_DIR=/llamafiles \
+  -p 8800:8800 \
   memory-cache/hub-dev \
   python3 src/hub.py
 ```
