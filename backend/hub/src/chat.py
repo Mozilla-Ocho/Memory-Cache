@@ -2,9 +2,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain.memory import ChatMessageHistory
-
-history = ChatMessageHistory()
 
 chat = ChatOpenAI(temperature=0,
                   openai_api_key="KEY",
