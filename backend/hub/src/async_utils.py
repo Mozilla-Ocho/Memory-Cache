@@ -14,6 +14,11 @@ def run(coroutines, loop):
     asyncio.run_coroutine_threadsafe(wait_for(coroutines, finish_event), loop)
     return finish_event
 
+def run_async(coroutines):
+    finish_event = threading.Event()
+    asyncio.run_coroutine_threadsafe(wait_for(coroutines, finish_event), get_my_loop())
+    return finish_event
+
 loop = None
 def set_my_loop(l):
     global loop

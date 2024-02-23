@@ -6,6 +6,8 @@ import aiofiles
 import asyncio
 import subprocess
 import psutil
+from llamafile_infos import llamafile_infos
+from async_utils import run_async
 
 class DownloadHandle:
     def __init__(self):
@@ -59,9 +61,14 @@ _instance = None
 def get_llamafile_manager(llamafiles_dir: str = None):
     global _instance
     if _instance is None:
-        if llamafiles_dir is None:
-            raise ValueError("Must specify llamafiles_dir when creating the LlamafileManager instance")
         _instance = LlamafileManager(llamafiles_dir)
+
+    if _instance.llamafiles_dir is None and llamafiles_dir is not None:
+        _instance.llamafiles_dir = llamafiles_dir
+
+    if _instance.llamafiles_dir != None and llamafiles_dir != _instance.llamafiles_dir:
+        raise ValueError("LlamafileManager already created with a different llamafiles_dir")
+
     return _instance
 
 class LlamafileManager:
@@ -70,11 +77,20 @@ class LlamafileManager:
         self.download_handles = []
         self.run_handles = []
 
+    def list_all_llamafiles(self):
+        return llamafile_infos
+
     def list_llamafiles(self):
         return [f for f in os.listdir(self.llamafiles_dir) if f.endswith('.llamafile')]
 
     def has_llamafile(self, name):
         return name in self.list_llamafiles()
+
+    def download_llamafile_by_name(self, name):
+        for info_name, url in self.list_all_llamafiles():
+            if info_name == name:
+                return self.download_llamafile(url, name)
+        return None
 
     def download_llamafile(self, url, name):
         handle = DownloadHandle()
@@ -83,6 +99,7 @@ class LlamafileManager:
         handle.llamafile_name = name
         handle.filename = os.path.join(self.llamafiles_dir, name)
         handle.coroutine = download(handle)
+        handle.finish_event = run_async([handle.coroutine])
         return handle
 
     def run_llamafile(self, name: str, args: list):
@@ -105,6 +122,8 @@ class LlamafileManager:
 
         return handle
 
+    def is_llamafile_running(self, name: str):
+        return any(h for h in self.run_handles if h.llamafile_name == name)
 
     def stop_llamafile(self, handle: RunHandle):
         print(f"Stopping process {handle.process.pid}")
@@ -131,3 +150,9 @@ class LlamafileManager:
         for handle in self.run_handles:
             self.stop_llamafile(handle)
         self.run_handles.clear()
+
+    def llamafile_download_progress(self, name: str):
+        for handle in self.download_handles:
+            if handle.llamafile_name == name:
+                return handle.progress()
+        return None
