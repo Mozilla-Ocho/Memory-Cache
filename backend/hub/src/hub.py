@@ -3,7 +3,7 @@ from llamafile_infos import llamafile_infos
 from langchain_community.llms.llamafile import Llamafile
 from typing import Generator
 from typing import List
-from async_utils import start_async_loop, run, set_my_loop
+from async_utils import start_async_loop, run, set_my_loop, get_my_loop
 from tqdm import tqdm
 import asyncio
 import threading
@@ -15,8 +15,7 @@ import webbrowser
 import uvicorn
 from fastapi import FastAPI
 from time import sleep
-import webapp
-from webapp import app
+from api import app
 from gradio_app import iface
 
 llamafiles_dir = os.environ.get('LLAMAFILES_DIR')
@@ -24,15 +23,8 @@ if not llamafiles_dir:
     raise ValueError("LLAMAFILES_DIR environment variable is not set")
 manager = get_llamafile_manager(llamafiles_dir)
 
-loop = None
-
 async def main():
-    global loop
-    loop = asyncio.new_event_loop()
-    set_my_loop(loop)
-    t = threading.Thread(target=start_async_loop, args=(loop,), daemon=True)
-    t.start()
-
+    loop = get_my_loop()
 
     print("Llamafiles directory:", manager.llamafiles_dir)
 
@@ -84,21 +76,20 @@ async def main():
         user_input = input("\nType a prompt or type 'exit' to quit:\n  > ")
         if user_input.lower() == "exit":
             break
-        # print()
-        # # Send the prompt to the llamafile server
-        # print("Sending prompt to llamafile server:", user_input)
-        # print()
+        print()
+        # Send the prompt to the llamafile server
+        print("Sending prompt to llamafile server:", user_input)
+        print()
 
-        # generator = llm.stream(user_input)
-        # assert isinstance(generator, Generator)
-        # for token in generator:
-        #     assert isinstance(token, str)
-        #     print(token, end="", flush=True)
+        generator = llm.stream(user_input)
+        assert isinstance(generator, Generator)
+        for token in generator:
+            assert isinstance(token, str)
+            print(token, end="", flush=True)
 
     print("Stopping all llamafile servers...")
     manager.stop_all_llamafiles()
     print("All llamafile servers stopped.")
-
 
 
 def run_async_main():
@@ -111,18 +102,21 @@ def run_gradio():
     iface.launch()
 
 if __name__ == "__main__":
+    loop = asyncio.new_event_loop()
+    set_my_loop(loop)
+    t = threading.Thread(target=start_async_loop, args=(loop,), daemon=True)
+    t.start()
+
     t2 = threading.Thread(target=run_async_fastapi, daemon=True)
     t2.start()
 
-    t = threading.Thread(target=run_async_main, daemon=True)
-    t.start()
+    # t3 = threading.Thread(target=run_gradio, daemon=True)
+    # t3.start()
 
-    t3 = threading.Thread(target=run_gradio, daemon=True)
-    t3.start()
+    t4 = threading.Thread(target=run_async_main, daemon=True)
+    t4.start()
 
-    sleep(1)
-
-    webbrowser.open("http://localhost:8001/", new=0)
+    #webbrowser.open("http://localhost:8001/", new=0)
+    #webbrowser.open("http://localhost:7860/", new=0)
 
     t.join()
-    t2.join()

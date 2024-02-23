@@ -41,12 +41,10 @@ class DownloadLlamafileRequest(BaseModel):
 @app.post("/api/llamafile_manager/download_llamafile")
 async def download_llamafile(request: DownloadLlamafileRequest):
     loop = get_my_loop()
-    print("HELLO WORLD!!")
     if manager.has_llamafile(request.name):
         return "already downloaded"
 
     handle = manager.download_llamafile(request.url, request.name)
-    print("Downloading llamafile", request.name)
     pbar = tqdm(total=handle.content_length, unit="B", unit_scale=True)
     run([handle.coroutine, update_tqdm(pbar, handle)], loop)
 
@@ -68,11 +66,8 @@ class RunLlamafileRequest(BaseModel):
 @app.post("/api/llamafile_manager/run_llamafile")
 async def run_llamafile(request: RunLlamafileRequest):
     # Check if it is already running
-    print("Hello world! This is a test message.")
-    print(manager.run_handles)
     if any(h for h in manager.run_handles if h.llamafile_name == request.name):
         return "already running"
-    print(request.name, request.args)
     manager.run_llamafile(request.name, request.args)
     return "ok"
 

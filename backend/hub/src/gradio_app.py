@@ -1,12 +1,17 @@
 import gradio as gr
 import requests
+from time import sleep
 
 # Define functions that will interact with the FastAPI endpoints
 def list_llamafiles():
-    response = requests.get("http://localhost:8001/api/llamafile_manager/list_llamafiles")
-    if response.status_code == 200:
-        return '\n'.join(response.json())
-    return "Failed to fetch llamafiles."
+    # If the request fails, it throws an error. We do not want the app to crash, so we catch the error and return an empty string.
+    try:
+        response = requests.get("http://localhost:8001/api/llamafile_manager/list_llamafiles")
+        if response.status_code == 200:
+            return "\n".join(response.json())
+        return ""
+    except:
+        return ""
 
 def has_llamafile(name):
     response = requests.get(f"http://localhost:8001/api/llamafile_manager/has_llamafile/{name}")
@@ -32,8 +37,30 @@ def run_llamafile(name, args):
         return response.text
     return "Failed to run llamafile."
 
+num = 0
+def increment():
+    global num
+    while True:
+        num += 1
+        yield num
+        sleep(1)
+
+def my_inc():
+    global num
+    def inner():
+        global num
+        num += 1
+        return num
+    return inner
+
 # Create the Gradio interface
 with gr.Blocks() as app:
+
+    with gr.Tab("Llamafile Manager"):
+        gr.Markdown("# Llamafile Manager")
+        gr.Textbox(value = my_inc(), label = "Seconds", interactive=False, every=1)
+
+
     with gr.Tab("List Llamafiles"):
         gr.Markdown("List all Llamafiles")
         gr.Button("List Llamafiles").click(list_llamafiles, [], gr.Textbox(label="Llamafiles"))
