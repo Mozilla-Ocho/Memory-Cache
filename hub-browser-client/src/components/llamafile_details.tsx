@@ -1,5 +1,5 @@
 import React from "react";
-import { ILlamafile } from "../api/llamafile_api";
+import { ILlamafile } from "../types";
 
 export const LlamafileDetails: React.FC<{ llamafile: ILlamafile }> = ({
   llamafile,

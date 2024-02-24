@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import { listLlamafiles, ILlamafile } from "./api/llamafile_api";
+import { listLlamafiles } from "./api/llamafile_api";
+import { ILlamafile } from "./types";
 import { LlamafileDetails } from "./components/llamafile_details";
 
 function App() {
