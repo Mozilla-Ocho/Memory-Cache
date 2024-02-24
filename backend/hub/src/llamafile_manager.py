@@ -6,7 +6,7 @@ import aiofiles
 import asyncio
 import subprocess
 import psutil
-from llamafile_infos import llamafile_infos
+from llamafile_infos import get_llamafile_infos
 from async_utils import run_async
 
 class DownloadHandle:
@@ -78,7 +78,7 @@ class LlamafileManager:
         self.run_handles = []
 
     def list_all_llamafiles(self):
-        return llamafile_infos
+        return get_llamafile_infos()
 
     def list_llamafiles(self):
         return [f for f in os.listdir(self.llamafiles_dir) if f.endswith('.llamafile')]
@@ -87,9 +87,9 @@ class LlamafileManager:
         return name in self.list_llamafiles()
 
     def download_llamafile_by_name(self, name):
-        for info_name, url in self.list_all_llamafiles():
-            if info_name == name:
-                return self.download_llamafile(url, name)
+        for info in self.list_all_llamafiles():
+            if info.name == name:
+                return self.download_llamafile(info.url, info.name)
         return None
 
     def download_llamafile(self, url, name):

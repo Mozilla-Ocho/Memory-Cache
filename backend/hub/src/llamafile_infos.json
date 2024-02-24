@@ -1,0 +1,66 @@
+[
+  {
+    "Model": "LLaVA 1.5",
+    "Size": "3.97 GB",
+    "License": "LLaMA 2",
+    "License URL": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+    "filename": "llava-v1.5-7b-q4.llamafile",
+    "url": "https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llava-v1.5-7b-q4.llamafile?download=true"
+  },
+  {
+    "Model": "Mistral-7B-Instruct",
+    "Size": "5.15 GB",
+    "License": "Apache 2.0",
+    "License URL": "https://choosealicense.com/licenses/apache-2.0/",
+    "filename": "mistral-7b-instruct-v0.2.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/Mistral-7B-Instruct-v0.2-llamafile/resolve/main/mistral-7b-instruct-v0.2.Q5_K_M.llamafile?download=true"
+  },
+  {
+    "Model": "Mixtral-8x7B-Instruct",
+    "Size": "30.03 GB",
+    "License": "Apache 2.0",
+    "License URL": "https://choosealicense.com/licenses/apache-2.0/",
+    "filename": "mixtral-8x7b-instruct-v0.1.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/Mixtral-8x7B-Instruct-v0.1-llamafile/resolve/main/mixtral-8x7b-instruct-v0.1.Q5_K_M.llamafile?download=true"
+  },
+  {
+    "Model": "WizardCoder-Python-34B",
+    "Size": "22.23 GB",
+    "License": "LLaMA 2",
+    "License URL": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+    "filename": "wizardcoder-python-34b-v1.0.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/WizardCoder-Python-34B-V1.0-llamafile/resolve/main/wizardcoder-python-34b-v1.0.Q5_K_M.llamafile?download=true"
+  },
+  {
+    "Model": "WizardCoder-Python-13B",
+    "Size": "7.33 GB",
+    "License": "LLaMA 2",
+    "License URL": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+    "filename": "wizardcoder-python-13b.llamafile",
+    "url": "https://huggingface.co/jartine/wizardcoder-13b-python/resolve/main/wizardcoder-python-13b.llamafile?download=true"
+  },
+  {
+    "Model": "TinyLlama-1.1B",
+    "Size": "0.76 GB",
+    "License": "Apache 2.0",
+    "License URL": "https://choosealicense.com/licenses/apache-2.0/",
+    "filename": "TinyLlama-1.1B-Chat-v1.0.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q5_K_M.llamafile?download=true"
+  },
+  {
+    "Model": "Rocket-3B",
+    "Size": "1.89 GB",
+    "License": "cc-by-sa-4.0",
+    "License URL": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "filename": "rocket-3b.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/rocket-3B-llamafile/resolve/main/rocket-3b.Q5_K_M.llamafile?download=true"
+  },
+  {
+    "Model": "Phi-2",
+    "Size": "1.96 GB",
+    "License": "MIT",
+    "License URL": "https://huggingface.co/microsoft/phi-2/resolve/main/LICENSE",
+    "filename": "phi-2.Q5_K_M.llamafile",
+    "url": "https://huggingface.co/jartine/phi-2-llamafile/resolve/main/phi-2.Q5_K_M.llamafile?download=true"
+  }
+]

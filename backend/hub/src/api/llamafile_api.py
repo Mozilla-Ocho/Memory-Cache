@@ -21,12 +21,12 @@ async def list_llamafiles():
     """List all llamafiles, including those that have not been downloaded."""
     llamafiles = manager.list_all_llamafiles()
     llamafile_infos = []
-    for name, url in llamafiles:
-        llamafile_infos.append(LlamafileInfo(name=name,
-                                             url=url,
-                                             downloaded=manager.has_llamafile(name),
-                                             running=manager.is_llamafile_running(name),
-                                             download_progress=manager.llamafile_download_progress(name)))
+    for info in llamafiles:
+        llamafile_infos.append(LlamafileInfo(name=info.name,
+                                             url=info.url,
+                                             downloaded=manager.has_llamafile(info.name),
+                                             running=manager.is_llamafile_running(info.name),
+                                             download_progress=manager.llamafile_download_progress(info.name)))
 
     return ListLlamafilesResponse(llamafiles=llamafile_infos)
 
@@ -41,16 +41,16 @@ class GetLlamafileResponse(BaseModel):
 async def get_llamafile(request: GetLlamafileRequest):
     """Get the llamafile info for the llamafile of the given name."""
     all_llamafile_infos = manager.list_all_llamafiles()
-    llamafile = next((l for l in all_llamafile_infos if l[0] == request.name), None)
+    llamafile = next((l for l in all_llamafile_infos if l.name == request.name), None)
     if llamafile is None:
         return GetLlamafileResponse(llamafile=None)
 
     return GetLlamafileResponse(
-        llamafile=LlamafileInfo(name=llamafile[0],
-                                url=llamafile[1],
-                                downloaded=manager.has_llamafile(llamafile[0]),
-                                running=manager.is_llamafile_running(llamafile[0]),
-                                download_progress=manager.llamafile_download_progress(llamafile[0])))
+        llamafile=LlamafileInfo(name=llamafile.name,
+                                url=llamafile.url,
+                                downloaded=manager.has_llamafile(llamafile.name),
+                                running=manager.is_llamafile_running(llamafile.name),
+                                download_progress=manager.llamafile_download_progress(llamafile.name)))
 
 class DownloadLlamafileRequest(BaseModel):
     name: str
