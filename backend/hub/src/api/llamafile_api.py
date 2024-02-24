@@ -88,8 +88,26 @@ async def run_llamafile(request: RunLlamafileRequest):
     try:
         result = manager.run_llamafile(request.name, ["--host", "0.0.0.0",
                                                       "--port", "8800",
-                                                      "--no-browser",
-                                                      "-ngl", "999"])
+                                                      "--nobrowser"])
+                                                      #"-ngl", "999"])
         return RunLlamafileResponse(success=True)
     except ValueError:
         return RunLlamafileResponse(success=False)
+
+
+class StopLlamafileRequest(BaseModel):
+    name: str
+
+class StopLlamafileResponse(BaseModel):
+    success: bool
+
+@router.post("/stop_llamafile")
+async def stop_llamafile(request: StopLlamafileRequest):
+    """Stop the llamafile of the given name."""
+    # The given name might not be valid, in which case the manager will throw.
+    # If the manager throws, return success: false
+    try:
+        result = manager.stop_llamafile_by_name(request.name)
+        return StopLlamafileResponse(success=result)
+    except ValueError:
+        return StopLlamafileResponse(success=False)

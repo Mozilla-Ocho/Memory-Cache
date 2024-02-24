@@ -130,6 +130,12 @@ class LlamafileManager:
     def is_llamafile_running(self, name: str):
         return any(h for h in self.run_handles if h.llamafile_name == name)
 
+    def stop_llamafile_by_name(self, name: str):
+        for handle in self.run_handles:
+            if handle.llamafile_name == name:
+                return self.stop_llamafile(handle)
+        return False
+
     def stop_llamafile(self, handle: RunHandle):
         print(f"Stopping process {handle.process.pid}")
         if handle.process.poll() is None:
@@ -147,9 +153,11 @@ class LlamafileManager:
                 handle.process.wait()  # Wait for the parent process to terminate
             except psutil.NoSuchProcess:
                 print(f"Process {handle.process.pid} does not exist anymore.")
-            self.run_handles.remove(handle)
         else:
             print(f"Process {handle.process.pid} is not running")
+
+        self.run_handles.remove(handle)
+        return True
 
     def stop_all_llamafiles(self):
         for handle in self.run_handles:

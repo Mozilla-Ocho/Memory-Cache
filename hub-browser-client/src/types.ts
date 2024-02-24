@@ -19,3 +19,10 @@ export interface IRunLlamafileRequest {
 export interface IRunLlamafileResponse {
   success: boolean;
 }
+
+export interface IStopLlamafileRequest {
+  name: string;
+}
+export interface IStopLlamafileResponse {
+  success: boolean;
+}

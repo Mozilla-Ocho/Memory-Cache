@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { ILlamafile } from "../types";
-import { downloadLlamafile, runLlamafile } from "../api/llamafile_api";
+import {
+  downloadLlamafile,
+  runLlamafile,
+  stopLlamafile,
+} from "../api/llamafile_api";
 
 export const LlamafileDetails: React.FC<{ llamafile: ILlamafile }> = ({
   llamafile,
 }) => {
   const [downloadButtonText, setDownloadButtonText] = useState("Download");
-  const [runButtonText, setRunButtonText] = useState(
-    llamafile.running ? "Running" : "Run",
-  );
   return (
     <div
       style={{
@@ -42,16 +43,19 @@ export const LlamafileDetails: React.FC<{ llamafile: ILlamafile }> = ({
       </button>
       <button
         onClick={() => {
-          setRunButtonText("Running");
-          runLlamafile(llamafile.name).then((result) => {
-            setRunButtonText(
-              `${result.success ? "Running" : "Run failed. Try again?"}`,
-            );
-          });
+          runLlamafile(llamafile.name);
         }}
         disabled={llamafile.running}
       >
-        {runButtonText}
+        {`${llamafile.running ? "Running" : "Run"}`}
+      </button>
+      <button
+        onClick={() => {
+          stopLlamafile(llamafile.name);
+        }}
+        disabled={!llamafile.running}
+      >
+        {"Stop"}
       </button>
     </div>
   );
