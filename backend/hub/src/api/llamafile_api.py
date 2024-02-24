@@ -73,3 +73,23 @@ async def llamafile_download_progress(request: LlamafileDownloadProgressRequest)
     """Get the download progress of the llamafile of the given name."""
     progress = manager.llamafile_download_progress(request.name)
     return LlamafileDownloadProgressResponse(progress=progress)
+
+class RunLlamafileRequest(BaseModel):
+    name: str
+
+class RunLlamafileResponse(BaseModel):
+    success: bool
+
+@router.post("/run_llamafile")
+async def run_llamafile(request: RunLlamafileRequest):
+    """Download the llamafile of the given name."""
+    # The given name might not be valid, in which case the manager will throw.
+    # If the manager throws, return success: false
+    try:
+        result = manager.run_llamafile(request.name, ["--host", "0.0.0.0",
+                                                      "--port", "8800",
+                                                      "--no-browser",
+                                                      "-ngl", "999"])
+        return RunLlamafileResponse(success=True)
+    except ValueError:
+        return RunLlamafileResponse(success=False)

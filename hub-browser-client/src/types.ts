@@ -12,3 +12,10 @@ export interface IDownloadLlamafileRequest {
 export interface IDownloadLlamafileResponse {
   success: boolean;
 }
+
+export interface IRunLlamafileRequest {
+  name: string;
+}
+export interface IRunLlamafileResponse {
+  success: boolean;
+}

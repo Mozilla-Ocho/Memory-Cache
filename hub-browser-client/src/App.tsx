@@ -23,8 +23,8 @@ function App() {
   return (
     <div className="App">
       {llamafiles.map((llamafile, index) => (
-        <div>
-          <LlamafileDetails key={index} llamafile={llamafile} />
+        <div key={index}>
+          <LlamafileDetails key={llamafile.name} llamafile={llamafile} />
         </div>
       ))}
       <button onClick={() => listLlamafiles().then(setLlamafiles)}>

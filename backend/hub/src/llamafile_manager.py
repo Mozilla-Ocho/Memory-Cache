@@ -125,7 +125,6 @@ class LlamafileManager:
         handle.args = args
         cmd = f"{handle.filename} {' '.join(args)}"
         handle.process = subprocess.Popen(["sh", "-c", cmd])
-
         return handle
 
     def is_llamafile_running(self, name: str):
