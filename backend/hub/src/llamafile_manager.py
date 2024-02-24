@@ -93,6 +93,12 @@ class LlamafileManager:
         return None
 
     def download_llamafile(self, url, name):
+        # If we already have a download handle for this file, delete that other handle
+        for handle in self.download_handles:
+            if handle.llamafile_name == name:
+                self.download_handles.remove(handle)
+                break
+
         handle = DownloadHandle()
         self.download_handles.append(handle)
         handle.url = url

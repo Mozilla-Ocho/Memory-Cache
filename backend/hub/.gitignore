@@ -3,5 +3,6 @@
 dist/
 build/
 venv/
-src/__pycache__
 sqlite.db
+__pycache__/
+*.pyc

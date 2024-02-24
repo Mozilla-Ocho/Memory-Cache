@@ -9,12 +9,23 @@ function App() {
 
   useEffect(() => {
     listLlamafiles().then(setLlamafiles);
+
+    // Set up an interval to fetch llama files every second
+    const intervalId = setInterval(() => {
+      console.log("Fetching llamafiles");
+      listLlamafiles().then(setLlamafiles);
+    }, 1000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
     <div className="App">
       {llamafiles.map((llamafile, index) => (
-        <LlamafileDetails key={index} llamafile={llamafile} />
+        <div>
+          <LlamafileDetails key={index} llamafile={llamafile} />
+        </div>
       ))}
       <button onClick={() => listLlamafiles().then(setLlamafiles)}>
         Refresh

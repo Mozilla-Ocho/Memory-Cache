@@ -32,7 +32,7 @@ if __name__ == "__main__":
     # t3 = threading.Thread(target=run_gradio_interface, daemon=True)
     # t3.start()
 
-    webbrowser.open("http://localhost:8001/docs", new=0)
+    webbrowser.open("http://localhost:8001/", new=0)
     #webbrowser.open("http://localhost:7860/", new=0)
 
     t.join()
