@@ -6,13 +6,13 @@ import os
 import uvicorn
 import webbrowser
 from fastapi_app import app
-from gradio_app import iface
+# from gradio_app import iface
 
 def run_api_server():
-    uvicorn.run(app, host="localhost", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
 
-def run_gradio_interface():
-    iface.launch()
+# def run_gradio_interface():
+#     iface.launch()
 
 if __name__ == "__main__":
 

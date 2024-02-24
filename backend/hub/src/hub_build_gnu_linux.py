@@ -6,7 +6,7 @@ additional_files = [
     (os.path.join(current_directory, 'requirements', 'hub-base.txt'), '.'),
     (os.path.join(current_directory, 'requirements', 'hub-cpu.txt'), '.'),
     (os.path.join(current_directory, 'requirements', 'hub-builder.txt'), '.'),
-    (os.path.join(current_directory, '..', '..', 'browser-client', 'build'), 'static'),
+    (os.path.join(current_directory, '..', '..', 'hub-browser-client', 'build'), 'browser-client'),
 ]
 entry_point = os.path.join(current_directory, "src", "hub.py")
 

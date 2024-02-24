@@ -40,10 +40,10 @@ app.include_router(llamafile_router, prefix="/api/llamafile")
 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
     # The application is frozen by PyInstaller
     bundle_dir = sys._MEIPASS
+    static_files_dir = os.path.join(bundle_dir, 'browser-client')
 else:
     # The application is running in a normal Python environment
     bundle_dir = os.path.dirname(os.path.abspath(__file__))
+    static_files_dir = os.path.join(bundle_dir, '..', '..', '..', 'hub-browser-client', 'build')
 
-static_files_dir = os.path.join(bundle_dir, 'static')
-app.mount("/static", StaticFiles(directory=static_files_dir, html=True), name="static")
-
+app.mount("/", StaticFiles(directory=static_files_dir, html=True), name="static")

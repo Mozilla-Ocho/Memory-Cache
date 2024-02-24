@@ -2,7 +2,6 @@ aiofiles
 bs4
 certifi
 fastapi
-gradio
 langchain
 langchainhub
 langchain-openai

@@ -14,10 +14,7 @@ The `hub` is a central component of Memory Cache:
 
 ## Usage
 ```sh
-STATIC_FILES_DIR=./static \
-LLAMAFILES_DIR=~/media/llamafile \
-LLAMAFILE_SERVER_BASE_URL="http://localhost:8800" \
-./dist/memory-cache-hub-gnu-linux
+LLAMAFILES_DIR=~/media/llamafile ./dist/memory-cache-hub-gnu-linux
 ```
 
 ## Development
@@ -44,17 +41,21 @@ Install the dependencies:
 ```bash
 pip install -r requirements/hub-base.txt \
     -r requirements/hub-cpu.txt \
-    -r requirements/hub-dev.txt
+    -r requirements/hub-builder.txt
 ```
 
 Run the program:
 
 ```bash
-STATIC_FILES_DIR=../../browser-client/build \
-LLAMAFILES_DIR=~/media/llamafile \
-LLAMAFILE_SERVER_BASE_URL="http://localhost:8800" \
-python3 src/hub.py
+LLAMAFILES_DIR=~/media/llamafile python3 src/hub.py
 ```
+
+Or build with:
+
+``` sh
+python src/hub_build_gnu_linux.py
+```
+
 
 
 ### Docker Development Environment
@@ -82,7 +83,6 @@ docker run -it --rm \
   -v $(pwd):/hub \
   -v ~/media/llamafile:/llamafiles \
   -e LLAMAFILES_DIR=/llamafiles \
-  -e LLAMAFILE_SERVER_BASE_URL="http://localhost:8800" \
   -p 8800:8800 \
   memory-cache/hub-dev \
   python3 src/hub.py
@@ -121,7 +121,9 @@ Build the builder image:
 
 ```bash
 docker build -f docker/Dockerfile.hub-builder-gnu-linux -t memory-cache/hub-builder-gnu-linux .
+docker build -f docker/Dockerfile.hub-builder-old-gnu-linux -t memory-cache/hub-builder-old-gnu-linux .
 ```
+
 
 Run the builder container:
 
@@ -129,6 +131,10 @@ Run the builder container:
 docker run -it --rm \
   -v $(pwd):/hub \
   memory-cache/hub-builder-gnu-linux
+
+docker run -it --rm \
+  -v $(pwd):/hub \
+  memory-cache/hub-builder-old-gnu-linux
 ```
 
 The builder will generate `memory-cache-hub-gnu-linux` in the `dist` directory.
