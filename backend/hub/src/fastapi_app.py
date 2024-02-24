@@ -6,11 +6,28 @@ import os
 import sys
 from api.thread_api import router as thread_router
 from api.llamafile_api import router as llamafile_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Memory Cache Hub",
     version="1.0",
     description="Manage llamafiles, document store, and vector database.",
+)
+
+app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(thread_router, prefix="/api/thread")
