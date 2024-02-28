@@ -1,0 +1,8 @@
+*.log
+*.spec
+dist/
+build/
+venv/
+sqlite.db
+__pycache__/
+*.pyc

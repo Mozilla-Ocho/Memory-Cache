@@ -1,0 +1,20 @@
+from ubuntu:22.04
+
+RUN apt-get update
+
+RUN apt-get install -y python3 python3-pip
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN apt-get install wget -y
+RUN wget -O /usr/bin/ape https://cosmo.zip/pub/cosmos/bin/ape-$(uname -m).elf
+RUN chmod +x /usr/bin/ape
+# RUN sh -c "echo ':APE:M::MZqFpD::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register"
+# RUN sh -c "echo ':APE-jart:M::jartsr::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register"
+
+COPY . .
+
+CMD [ "python3", "./manager.py" ]

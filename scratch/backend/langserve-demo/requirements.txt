@@ -1,0 +1,8 @@
+bs4
+fastapi
+langchain
+langchainhub
+langchain-openai
+langchain-cli
+langserve[all]
+uvicorn

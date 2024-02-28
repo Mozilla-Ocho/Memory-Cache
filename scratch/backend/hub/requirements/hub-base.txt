@@ -1,0 +1,13 @@
+aiofiles
+bs4
+certifi
+fastapi
+langchain
+langchainhub
+langchain-openai
+langchain-cli
+langserve[all]
+requests ~= 2.31
+tqdm
+uvicorn
+psutil
