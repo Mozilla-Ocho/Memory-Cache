@@ -14,8 +14,6 @@ app = FastAPI(
     description="Manage llamafiles, document store, and vector database.",
 )
 
-app = FastAPI()
-
 origins = [
     "http://localhost",
     "http://localhost:8080",
