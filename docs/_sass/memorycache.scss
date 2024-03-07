@@ -56,8 +56,30 @@ a {
 
 .post-list-heading {
   font-size: 16px;
+  padding-top: 5px;
 }
 
 .post-link {
   font-size: 16px;
+}
+
+.moz-logo {
+  width: 128px;
+  float: right;
+}
+
+.detailed-overview {
+  padding-top: 5px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: #F0EFEF;
+  border-bottom-color: #F0EFEF;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    margin: 1em 0 3em 0;
 }

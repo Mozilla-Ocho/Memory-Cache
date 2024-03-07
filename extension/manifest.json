@@ -14,7 +14,7 @@
     ], 
     "browser_action" : {
         "browser_style" : true,
-        "default_icon" : "icons/memwrite-32.png", 
+        "default_icon" : "icons/MC-Brainprint-32.png", 
         "default_title" : "Memory Cache", 
         "default_popup" : "popup/memory_cache.html"
     },

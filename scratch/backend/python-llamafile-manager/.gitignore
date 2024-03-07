@@ -1,0 +1,6 @@
+llama.log
+main.log
+build/
+dist/
+bin/
+python-llamafile-manager-gnu-linux.spec

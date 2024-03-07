@@ -1,0 +1,17 @@
+# GNU/Linux
+#
+# PyInstaller requires the ldd terminal application to discover the shared libraries required by each program or shared library. It is typically found in the distribution-package glibc or libc-bin.
+#
+# It also requires the objdump terminal application to extract information from object files and the objcopy terminal application to append data to the bootloader. These are typically found in the distribution-package binutils.
+
+FROM ubuntu:22.04
+RUN apt-get update
+RUN apt-get install -y binutils
+RUN apt-get install -y libc-bin
+RUN apt-get install -y python3 python3-pip
+RUN pip install pyinstaller
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD [ "python3", "./build_gnu_linux.py" ]
