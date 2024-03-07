@@ -20,12 +20,12 @@ When we started the project last year, the world was in a different place. Refle
 Awareness of the barriers to entry to an experience is where designers do their best work. We strive to find meaningful solutions to problems that will sustain. Acknowledging the emotional barrier is the foundation of how we are thinking about MemoryCache. Depending on who you are, interacting with a chatbot has baggage - in the same way that social situations differ across individuals. There are social aspects, language considerations, articulation differences, historical contexts, etc. This is A LOT to deal with as a user of a system. When approaching the design work for MemoryCache, our guiding light is to take into account the unique humanity of each person and allow for the ability to utilize the technology to create an environment that nurtures human needs rather than profit from them.
 
 <figure>
-  <img src="https://github.com/Mozilla-Ocho/Memory-Cache/assets/100849201/bfc11078-6f06-45e8-a7a8-bf369241a57d" alt="Design mockups and explorations for the interface of MemoryCache as a desktop application">
+  <img src="https://github.com/Mozilla-Ocho/Memory-Cache/assets/100849201/4dc37c30-ba29-45ff-b20d-94d6ed212ce7" alt="Design mockups and explorations for the interface of MemoryCache as a desktop application">
   <figcaption>Exploratory work for interactions that combine with chat interface to interact with the agent in personalized ways for various usecases</figcaption>
 </figure>
 
 <figure>
-  <img src="https://github.com/Mozilla-Ocho/Memory-Cache/assets/100849201/941edfcf-a05b-4f83-bb4c-26b75b061cbd" alt="Design mockup with various color theme options">
+  <img src="https://github.com/Mozilla-Ocho/Memory-Cache/assets/100849201/416bb481-0a73-409d-b464-5a5369f04c00" alt="Design mockup with various color theme options">
   <figcaption>Design mockups and explorations for the UI exploring themes and personalization in combination with input methods for interaction</figcaption>
 </figure>
 
