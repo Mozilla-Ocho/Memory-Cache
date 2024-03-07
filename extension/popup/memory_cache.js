@@ -16,7 +16,16 @@ async function generateFileName(ext) {
       }
     })
     .then ((fileName)=> {
-      return fileName.replaceAll(":","");
+      return fileName.replaceAll(":","")
+                     .replaceAll("!","")
+                      .replaceAll("?","")
+                      .replaceAll("/","")
+                      .replaceAll("\\","")
+                      .replaceAll("*","")
+                      .replaceAll("|","")
+                      .replaceAll(" ","")
+                      .replaceAll("<","")
+                      .replaceAll(">","");
     })
     .catch((error) => {
       reject(`Error querying tabs: ${error}`);
@@ -34,7 +43,7 @@ async function savePDF() {
     // Fallback to non-silent mode.
     await browser.tabs.saveAsPDF({
       // Omit the DOWNLOAD_SUBDIRECTORY prefix because saveAsPDF will not respect it.
-      toFileName: `PAGE-${generateFileName("pdf")}`,
+      toFileName: `PAGE-${await generateFileName("pdf")}`,
     });
   }
 }
