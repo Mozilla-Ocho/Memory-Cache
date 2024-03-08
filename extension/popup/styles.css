@@ -1,39 +1,13 @@
 :root {
-    --border-radius: 8px;
-    --primary: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
-	--primary-hover:linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
-	--primary-active: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
-	--primary-content: #000000;
-	--secondary: #180AB8;
-	--secondary-hover: #1609A6;
-	--secondary-active: #130893;
-	--secondary-content: #fff;
-	--inactive-content:#F9F9F9;
-	--interaction-inactive:#B6B9BF;
-	--base-100: #F6F6F6;
-	--base-200: #fff;
-	--base-content: #2d3d46;
-	--base-content-subtle: #565D6D;
-	--info: #3ac0f8;
-	--info-content: #000;
-	--warning: #fcbc23;
-	--warning-content: #000;
-	--success: #37d399;
-	--success-content: #000;
-	--error: #f87272;
-	--error-content: #000;
-	--border-1: #EDEDED;
-
-	--xxs:4px;
-	--xs:8px;
-	--sm:12px;
-	--md:16px;
-	--lg:24px;
-	--xl:40px;
+    --mcgradient: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
+    --mcgradient-hover: linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%);
+    --mcgradient-active: linear-gradient(90deg, #FF9EA8 0%, #FFD29E 26.56%, #FFFF9E 50.52%, #73E8D4 76.04%, #99D3FF 100%);
+    --neutral-content: #565D6D;
+    --border-radius: 8px;   
 }
 
 body {
-    background: var(--base-100);
+    background: white;
     font-weight: 500;
     font-size: .9em;
     font-family: 'Work Sans';
@@ -43,9 +17,9 @@ body {
 #header {
     line-height: 24px;
     font-size: 16px;
-    color: var(--base-content);
-    background-color: var(--base-100);
-    border-bottom-color: var(--border-1);
+    color: black;
+    background-color: white;
+    border-bottom-color: #F0EFEF;
     border-bottom-width: 1px;
 }
 
@@ -66,14 +40,13 @@ body {
 }
 
 .primary-btn {
-    background: var(--primary);
-    margin-bottom:.8em;
+    background: var(--mcgradient);
 }
 .primary-btn:hover {
-    background:var(--primary-hover);
+    background:var(--mcgradient-hover);
 }
 .primary-btn:active {
-    background:var(--primary-active);
+    background:var(--mcgradient-active);
 }
 
 .secondary-btn {
@@ -99,7 +72,7 @@ body {
     width: 96%;
 }
 .text-field label {
-    color: var(--base-content-subtle);
+    color: var(--neutral-content);
 }
 
 #text-note {
@@ -116,19 +89,16 @@ body {
 
 
 .footer {
-    background-color:var(--base-200);
+    background-color: #F0EFEF;
     padding:8px;
-    display:flex;
-    justify-content: space-between;
-} 
-
-a {
+}
+.footer a {
     text-decoration: none;
-    color:var(--secondary);
+    color:black;
     font-size: 14px;
     font-weight: 400;
 }
 
-a:hover, a:focus, a:visited {
-    color: var(--secondary-hover);
+.foooter a:hover {
+    color: var( --neutral-content);
 }
