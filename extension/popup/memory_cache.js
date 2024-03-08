@@ -1,3 +1,5 @@
+import { marked } from "./marked.esm.js";
+
 const DOWNLOAD_SUBDIRECTORY = "MemoryCache";
 
 /*
@@ -72,9 +74,14 @@ async function saveHtml() {
 
 async function saveNote() {
   const text = document.querySelector("#text-note").value;
+<<<<<<< HEAD
+  const filename = `${DOWNLOAD_SUBDIRECTORY}/NOTE${generateFileName("md")}`;
+  const file = new File([text], filename, { type: "text/plain" });
+=======
   let fileName = await generateFileName("txt");
   fileName = `${DOWNLOAD_SUBDIRECTORY}/NOTE-${fileName}`;
   const file = new File([text], fileName, { type: "text/plain" });
+>>>>>>> 7b1ee457f9928f081fb2e71e8531827044bd76ec
   const url = URL.createObjectURL(file);
   browser.downloads.download({ url, filename: fileName, saveAs: false });
 
@@ -109,4 +116,27 @@ browser.storage.local.get("noteDraft").then((res) => {
   if (res.noteDraft) {
     document.querySelector("#text-note").value = res.noteDraft;
   }
+});
+
+function setTextView(showPreview) {
+  var textArea = document.getElementById("text-note");
+  var previewDiv = document.getElementById("preview-note");
+  if (showPreview) {
+    textArea.style.display = "none";
+    previewDiv.style.display = "block";
+
+    previewDiv.innerHTML = marked(textArea.value);
+  } else {
+    // Switch to editing mode
+    previewDiv.style.display = "none";
+    textArea.style.display = "block";
+  }
+}
+
+document.getElementById("edit-button").addEventListener("click", () => {
+  setTextView(false);
+});
+
+document.getElementById("preview-button").addEventListener("click", () => {
+  setTextView(true);
 });
