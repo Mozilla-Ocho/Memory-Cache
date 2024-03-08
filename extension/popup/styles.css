@@ -47,10 +47,11 @@ body {
     background-color: var(--base-100);
     border-bottom-color: var(--border-1);
     border-bottom-width: 1px;
+    padding:8px;
 }
 
 .body-container {
-    padding:8px;
+    padding:0 8px;
     display:flex;
     flex-direction: column;
 }
@@ -77,19 +78,16 @@ body {
 }
 
 .secondary-btn {
-    background: linear-gradient(white, white) padding-box,
-    linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) border-box;
-    border: 2px solid transparent;
+    background:var(--base-100);
+    border: 2px solid var(--border-1);
 }
 .secondary-btn:hover {
-    background: linear-gradient(90deg, #FFD6DA 0%, #FFF6EB 26.56%, #FFFFEB 50.52%, #E0FAF6 76.04%, #EBF6FF 100%) padding-box,
-    linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%) border-box;
-    border: 2px solid transparent;
+    background:var(--base-200);
+    border: 2px solid var(--border-1);
 }
 .secondary-btn:active {
-    background: linear-gradient(90deg, #FFC7CD 0%, #FFEAD1 26.56%, #FFFFD6 50.52%, #CFF7F0 76.04%, #D6EDFF 100%) padding-box,
-    linear-gradient(90deg, #FFA8B1 0%, #FFD9AD 26.56%, #FFFFAD 50.52%, #80EAD8 76.04%, #ADDCFF 100%) border-box;
-    border: 2px solid transparent;
+    background:var(--base-200);
+    border: 2px solid var(--border-1);
 }
 
 .text-field {
@@ -114,7 +112,9 @@ body {
     border-radius: var(--border-radius);
 }
 
+.header {
 
+}
 .footer {
     background-color:var(--base-200);
     padding:8px;
