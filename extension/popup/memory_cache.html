@@ -10,16 +10,15 @@
   </head>
 
 <body>
-    <div id="header"> 
-      <a href="https://github.com/misslivirose/MemoryCacheExt"><img id="headericon" src="../icons/MC-LogoNov23.svg" /></a>
-    </div>
-    <div class="body-container">
-      <div id="save-pdf-button" class="button primary-btn">Save page to Memory Cache (PDF)</div>
-      <div class="border"></div>
-      <div id="save-html-button" class="button primary-btn">Save page to Memory Cache (HTML)</div>
-      <div class="border"></div>
-      <div class="text-field">
-        <label for="text-note">Add quick note</label>
+  <div id="header">
+    <img id="headericon" src="../icons/MC-LogoNov23.svg"/>
+  </div>
+  <div class="body-container">
+    <div id="save-pdf-button" class="button primary-btn">Save page as PDF</div>
+    <div id="save-html-button" class="button primary-btn">Save page as HTML</div>
+    <div class="border"></div>
+    <div class="text-field">
+      <label for="text-note">Add quick note</label>
         <textarea id="text-note"></textarea>
         <div id="preview-note" style="display:none;"></div>
         <button id="edit-button" class="button secondary-btn">Edit</button>
@@ -30,7 +29,9 @@
 
     <div class="footer">
       <a href="https://github.com/misslivirose/Memory-Cache">View on GitHub</a>
+      <a href="https://memorycache.ai/"> memorycache.ai/</a>
     </div>
+
     <script type="module" src="marked.esm.js"></script>
     <script type="module" src="memory_cache.js"></script>
 </body>
