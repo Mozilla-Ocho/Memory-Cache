@@ -36,7 +36,7 @@ It's good to know that this is possible, but since our near-term goal for Memory
 
 Text summarization is still a simple task (in terms of inference inputs and outputs), so models trained to summarize are likely interchangable for the most part (modulo input/output lengths). However, once we start looking at more complicated types of tasks (like tool use / function calling / memory), the differences between models will be exaggerated.
 
-Consider an example like this dataset meant to help train a model to with act with agentic intentions, beliefs (memory), actions, and chat:
+Consider an example like [this dataset](https://huggingface.co/datasets/smangrul/assistant_chatbot_dataset) meant to help train a model to with act with agentic intentions, beliefs (memory), actions, and chat:
 
 ```
 Context:
