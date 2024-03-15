@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title:  "Memory Cache Dev Log March 15 2024"
@@ -11,6 +12,8 @@ _Author: John Shaughnessy_
 Last Friday, during a casual weekly engineering call, a colleague asked how LLM libraries (llama.cpp, llamafile, langchain, llamaindex, HF transformers, ollama, etc) handle the different chat templates and special tokens that models train on. It was a good question, and none of us seemed to have a complete answer.
 
 The subsequent discussion and research made me realize that a naive approach towards writing model-agnostic application would have unfortunate limitations. Insofar as the differences between models are actually important to the use case, application developers should write model-specific code.
+
+## Text Summarization
 
 I thought about the capabilities that are important for an application like Memory Cache, and which models would be good at providing those capabilities. The first obvious one was text summarization. I had "hacked" summarization by asking an assistant-type model (llamafile) to summarize text, but a model trained specifically for text summarization would be a better fit.
 
@@ -29,5 +32,35 @@ Bundling HF dependencies like pytorch increases the complexity of the release pr
 
 It's good to know that this is possible, but since our near-term goal for Memory Cache is just to prove out the technical bits mentioned in the [previous dev log](https://memorycache.ai/developer-blog/2024/03/07/devlog.html), we'll likely stick with the text summarization "hack" for now.
 
-Even if a dedicated text summarization model doesn't make it into the upcoming release, this was a valuable excursion. These are the exact types of problems I hoped to stumble over along the way.
+## Training Agents
 
+Text summarization is still a simple task (in terms of inference inputs and outputs), so models trained to summarize are likely interchangable for the most part (modulo input/output lengths). However, once we start looking at more complicated types of tasks (like tool use / function calling / memory), the differences between models will be exaggerated.
+
+Consider an example like this dataset meant to help train a model to with act with agentic intentions, beliefs (memory), actions, and chat:
+
+```
+Context:
+
+<|begincontext|><|beginlastuserutterance|>I am feeling hungry so I would like to find a place to eat.<|endlastuserutterance|><|endcontext|>
+```
+
+```
+Target:
+
+<|begintarget|><|begindsts|><|begindst|><|beginintent|>FindRestaurants<|endintent|><|beginbelief|><|endbelief|><|enddst|><|enddsts|><|beginuseraction|>INFORM_INTENT->Restaurants^intent~FindRestaurants<|enduseraction|><|beginaction|>REQUEST->Restaurants^city~<|endaction|><|beginresponse|>Do you have a specific which you want the eating place to be located at?<|endresponse|><|endtarget|>
+```
+
+Here, we can see that there are _many_ special tokens that the application developer would need to be aware of:
+
+```
+- <beginintent></endintent>
+- <beginbelief></endbelief>
+- <beginaction></endaction>
+- <beginresponse></endresponse>
+```
+
+Research on how to train these types of models is still rapidly evolving. I suspect attempting to abstract away these differences will lead to leaky or nerfed abstractions in libraries and toolkits. For now, my guess is that it's better to write application code targeting the specific models you want to use.
+
+## Conclusion
+
+Even if a dedicated text summarization model doesn't make it into the upcoming release, this was a valuable excursion. These are the exact types of problems I hoped to stumble over along the way.
