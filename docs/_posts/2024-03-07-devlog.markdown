@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "MemoryCache March Development Update"
+title:  "Memory Cache Dev Log March 7 2024"
 date:   2024-03-07 08 -0500
 categories: developer-blog
 ---
 _Author: John Shaughnessy_
 
 
-# Memory Cache Dev Log, March 2024
+# Memory Cache Dev Log, March 7 2024
 
 A couple months ago [we introduced Memory Cache](https://future.mozilla.org/blog/introducing-memorycache/):
 
