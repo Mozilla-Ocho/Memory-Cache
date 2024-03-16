@@ -1,100 +1,14 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap");
-
-body {
-    font-family: 'Work Sans';
-}
-
-.home {
+html, body {
+  font-family: 'Work Sans', sans-serif;
   background: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%);
-}
-
-.site-title {
-    font-family: 'Work Sans';
-    color: coral;
-}
-
-.introduction {
-    background-image: url('../assets/images/header-background.png');
-    background-repeat:no-repeat;
-    background-size: 675px 210.75px;
-    background-position: right;
-    width: 100%;
-    min-height: 201px;
-
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #F0EFEF;
-}
-
-.page-content {
-  background-color: white;
-}
-
-a {
-    color: #180AB8;
-}
-
-.site-logo {
-    width: 166px;
-    height: 36px;
-}
-
-.site-header {
-    border-top-width: 5px;
-    border-top-style: solid;
-    border-image: linear-gradient(90deg, #FFB3BB 0%, #FFDFBA 26.56%, #FFFFBA 50.52%, #87EBDA 76.04%, #BAE1FF 100%) 1 0 0 0;
-
-}
-
-.callout-left {
-  width: 75%;
-  padding-top: 5%;
-}
-
-.page-content {
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #F0EFEF;
-
-}
-
-.post-list-heading {
-  font-size: 16px;
-  padding-top: 5px;
-}
-
-.post-link {
-  font-size: 16px;
-}
-
-.moz-logo {
-  width: 128px;
-  float: right;
-}
-
-.detailed-overview {
-  padding-top: 5px;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-top-color: #F0EFEF;
-  border-bottom-color: #F0EFEF;
-}
-
-figcaption {
-    text-align: center;
-    font-style: italic;
-    margin: 1em 0 3em 0;
-}
-
+  padding: 0;
+  margin: 0; }
 
 section {
   max-width: 800px;
-  margin: auto;
-}
-
+  margin: auto; }
 
 header {
   margin: 24 0; }
@@ -117,12 +31,10 @@ header {
         color: #2d3d46;
         font-size: 16px;
         font-weight: 400;
-        line-height: 24px;
-}
+        line-height: 24px; }
 
 .hero {
-  padding: 40px;
-}
+  padding: 40px; }
 
 .features {
   display: flex;
@@ -144,7 +56,7 @@ p {
 
 .heading-2 {
   color: #2d3d46;
-  font-size: 1.2em;
+  font-size: .8em;
   line-height: 150%;
   font-weight: 400; }
 
