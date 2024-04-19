@@ -65,11 +65,21 @@ The way Memory Cache works is that the user specifies files in their filesystem 
 
 It's not surprising that browser's don't support this. This isn't really what they're made for. But it means that for this initial version of Memory Cache Hub, I settled for telling the user to type complete file paths into an input field rather than having a file picker UI. This feels really bad and particularly unpolished, even for a demo app.
 
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_003.png">
+<figcaption></figcaption>
+</figure>
+
 ### No file previews
 
 The browser acts as a file viewer if you specify the path of a file prefixed with `file://` in the address bar. This is convenient, because I wanted to let users easily view the files in their cache.
 
 Unfortunately, due to security concerns, the browser disallows redirects to `file://` links. This means that the best I could do for Memory Cache was provide a "copy" button that puts the `file://` URI onto the user's clipboard. Then, they can open a new tab, paste the URL and preview the file. This is a much worse experience.
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_016.png">
+<figcaption></figcaption>
+</figure>
 
 My client could also have provided file previews (e.g. of PDF's) directly with the server sending the file contents to the client, but I didn't end up going down this route.
 
@@ -78,6 +88,11 @@ Again, this isn't surprising because I'm mostly using the browser as an applicat
 ## Llamafiles are (relatively) painless
 
 Using `llamafiles` for inference turned out to be an easy win. The dependencies of my python application stayed pretty simple because I didn't need to bring in hugging face / pytorch dependencies (and further separate platforms along `CUDA`/`ROCm`/`CPU` boundaries).
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_009.png">
+<figcaption></figcaption>
+</figure>
 
 There are some "gotchas" with using `llamafiles`, most of which are documented in the [`llamafile README`](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file). For example, I don't end up enabling GPU support because I didn't spend time on handling errors that can occur if `llamafile` fails to move model weights to GPU for whatever reason. There are also still some platform-specific troubleshooting tips you need to follow if the `llamafile` server fails to start for whatever reason.
 
@@ -95,13 +110,29 @@ The first complaint is about the way `single-file` builds work. At startup, they
 
 The second complaint is not really about `PyInstaller` and more about using Python at all, which is that in the end we're still running a python interpreter at runtime. There's no real "compile to bytecode/machine code" (except for those dependencies written in something like [Cython](https://cython.org/)). It seems like python is the most well-supported ecosystem for developer tools for ML / AI, and part of me wishes I were spending my time in C or Rust. Not that I'm excellent with those languages, but considering that I get better at whatever I spend time doing, I'd rather be getting better at things that give me more control over what the computer is actually doing.
 
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_018.png">
+<figcaption></figcaption>
+</figure>
+
 Nothing is stopping me from choosing different tools for my next project, and after all - `llama.cpp` is pretty darn popular and I'm looking forward to trying the (rust-based) [burn](https://github.com/tracel-ai/burn) project.
 
 ## Github Actions and Large Files
 
 Ok, so here's another problem with my gigantic bundled python executables with 10,000 files... My build pipeline takes 2+ hours to finish! 
 
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_021.png">
+<figcaption></figcaption>
+</figure>
+
 Uploading the build artifacts from the runner to github takes a long time -- especially for the zips that have over 10,000 files in them. This feels pretty terrible. Again, I think the problem is not with Github or PyInstaller or anything like that -- The problem is thinking that shipping 10,000 files was a good idea. It wasn't -- I regret it. haha.
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_020.png">
+<figcaption></figcaption>
+</figure>
+
 
 ## There's a lot of non-AI work to be done
 
@@ -123,6 +154,42 @@ There's been some interest in connecting Memory Cache more directly with the bro
 
 However, I'll likely leave that to others. My next projects will be unrelated to Memory Cache. There are a lot of simple ideas I want to play around with in the space just to deepen my understanding of LLMs, and there are a lot of projects external to Mozilla that I'd like to learn more about and maybe contribute to.
 
+## Screenshots
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_001.png">
+<figcaption>Files</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_022.png">
+<figcaption>About Memory Cache</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_004.png">
+<figcaption>Vector Search</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_005.png">
+<figcaption>Chat depends on a model running</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_007.png">
+<figcaption>The model selection page</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_009.png">
+<figcaption>The model selection page</figcaption>
+</figure>
+
+<figure>
+<img class="rounded-rect" src="https://memorycache.ai/assets/images/2024-04-19-memory-cache-hub/screenshot_010.png">
+<figcaption>Retrieval augmented chat</figcaption>
+</figure>
 
 
 
