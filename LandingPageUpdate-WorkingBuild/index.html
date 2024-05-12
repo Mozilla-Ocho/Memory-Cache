@@ -1,14 +1,27 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Page Title</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+<body>
+    <header>
+        <div class="content">
+            <img class="logo" src="logo.png" alt="MemoryCache Logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  {{ content }}
-  <main>
+    <main">
         <section class="hero">
             <!-- <h1 class="heading-1">MemoryCache</h1> -->
             <h1 class="heading-1">MemoryCache is an experimental development project to turn a local desktop environment into a personal on-device AI agent.</h1>
@@ -16,6 +29,7 @@ layout: default
         </section>
 
         <div class="banner-bar">
+
             <section>
                 <h2 class="heading-2">What's included?</h2>
             </section>
@@ -33,6 +47,8 @@ layout: default
                     <h3 class="heading-3">Llamafile LLM options for finding the right model for your usecase</h3>
                 </article>
             </section>
+
+
         </div>
 
 
@@ -60,25 +76,8 @@ layout: default
         </section>
     </main>
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Updates" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
-</div>
+    <footer>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
